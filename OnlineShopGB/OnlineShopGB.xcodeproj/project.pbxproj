@@ -125,8 +125,8 @@
 		8AF0D28E267CA2AF00FED02D /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8AF0D25E267CA16700FED02D /* AppDelegate.swift */,
 				8AF0D290267CA2C800FED02D /* Assembly */,
-				8AF0D298267CA51100FED02D /* AppDelegate */,
 				8AF0D28F267CA2C200FED02D /* Flows */,
 				8AF0D291267CA2E300FED02D /* Entity */,
 				8AF0D292267CA30000FED02D /* BuisnessLogic */,
@@ -192,14 +192,6 @@
 			children = (
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		8AF0D298267CA51100FED02D /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				8AF0D25E267CA16700FED02D /* AppDelegate.swift */,
-			);
-			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
