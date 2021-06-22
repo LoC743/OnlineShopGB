@@ -13,6 +13,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .magenta
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.logout()
+        }
+    }
+    
+    func logout() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.logoutRequestFactory()
     }
 }
 

@@ -40,4 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func logoutRequestFactory() {
+        guard let token = self.token else { return }
+        
+        let auth = requestFactory.makeAuthRequestFatory()
+        auth.logout(authToken: token) { response in
+            switch response.result {
+            case .success(let logout):
+                print(logout)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
