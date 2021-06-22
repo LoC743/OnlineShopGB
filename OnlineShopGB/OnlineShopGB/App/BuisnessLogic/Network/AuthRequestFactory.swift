@@ -11,4 +11,5 @@ protocol AuthRequestFactory {
     func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void)
     func logout(authToken: String, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
     func signUp(userName: String, password: String, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void)
+    func updateUserData(authToken: String, userName: String, password: String, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void)
 }

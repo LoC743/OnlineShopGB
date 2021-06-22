@@ -40,6 +40,11 @@ extension Auth: AuthRequestFactory {
         let requestModel = SignUp(baseUrl: baseUrl, login: userName, password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+    
+    func updateUserData(authToken: String, userName: String, password: String, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
+        let requestModel = UpdateUserData(baseUrl: baseUrl, authToken: authToken, login: userName, password: password)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
 }
 
 extension Auth {
@@ -80,6 +85,23 @@ extension Auth {
         let password: String
         var parameters: Parameters? {
             return [
+                "username": login,
+                "password": password
+            ]
+        }
+    }
+    
+    struct UpdateUserData: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .get // .put
+        let path: String = "changeUserData.json"
+        
+        let authToken: String
+        let login: String
+        let password: String
+        var parameters: Parameters? {
+            return [
+                "authToken": authToken,
                 "username": login,
                 "password": password
             ]

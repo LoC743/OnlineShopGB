@@ -21,6 +21,10 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.signUp()
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.updateUserData()
+        }
     }
     
     func logout() {
@@ -31,6 +35,11 @@ class ViewController: UIViewController {
     func signUp() {
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.signUpRequestFactory()
+    }
+    
+    func updateUserData() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.updateUserDataRequestFactory()
     }
 }
 

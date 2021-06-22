@@ -66,4 +66,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func updateUserDataRequestFactory() {
+        guard let token = self.token else { return }
+        
+        let auth = requestFactory.makeAuthRequestFatory()
+        auth.updateUserData(authToken: token, userName: "Somebody", password: "mypassword") { response in
+            switch response.result {
+            case .success(let update):
+                print(update)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
