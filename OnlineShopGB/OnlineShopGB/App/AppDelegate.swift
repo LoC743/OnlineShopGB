@@ -54,4 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func signUpRequestFactory() {
+        let auth = requestFactory.makeAuthRequestFatory()
+        auth.signUp(userName: "Somebody", password: "mypassword") { response in
+            switch response.result {
+            case .success(let signUp):
+                print(signUp)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

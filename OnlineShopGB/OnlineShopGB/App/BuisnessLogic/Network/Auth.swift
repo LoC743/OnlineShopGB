@@ -35,6 +35,11 @@ extension Auth: AuthRequestFactory {
         let requestModel = Logout(baseUrl: baseUrl, authToken: authToken)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+    
+    func signUp(userName: String, password: String, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
+        let requestModel = SignUp(baseUrl: baseUrl, login: userName, password: password)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
 }
 
 extension Auth {
@@ -62,6 +67,21 @@ extension Auth {
         var parameters: Parameters? {
             return [
                 "authToken": authToken,
+            ]
+        }
+    }
+    
+    struct SignUp: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .get // .post
+        let path: String = "registerUser.json"
+        
+        let login: String
+        let password: String
+        var parameters: Parameters? {
+            return [
+                "username": login,
+                "password": password
             ]
         }
     }

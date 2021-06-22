@@ -17,11 +17,20 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.logout()
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.signUp()
+        }
     }
     
     func logout() {
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.logoutRequestFactory()
+    }
+    
+    func signUp() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.signUpRequestFactory()
     }
 }
 
