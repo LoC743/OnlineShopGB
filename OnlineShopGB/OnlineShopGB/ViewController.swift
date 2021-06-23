@@ -11,10 +11,35 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         view.backgroundColor = .magenta
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.logout()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.signUp()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.updateUserData()
+        }
     }
-
-
+    
+    func logout() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.logoutRequestFactory()
+    }
+    
+    func signUp() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.signUpRequestFactory()
+    }
+    
+    func updateUserData() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.updateUserDataRequestFactory()
+    }
 }
 
