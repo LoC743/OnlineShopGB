@@ -25,6 +25,14 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.updateUserData()
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.catalogData()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.goodByID()
+        }
     }
     
     func logout() {
@@ -40,6 +48,16 @@ class ViewController: UIViewController {
     func updateUserData() {
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.updateUserDataRequestFactory()
+    }
+    
+    func catalogData() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.catalogDataRequestFactory()
+    }
+    
+    func goodByID() {
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.goodByIDRequestFactory()
     }
 }
 

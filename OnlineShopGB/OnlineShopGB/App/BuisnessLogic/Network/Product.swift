@@ -7,25 +7,59 @@
 
 import Alamofire
 
-class Product {
-
+class Product: AbstractRequestFactory {
+    let errorParser: AbstractErrorParser
+    let sessionManager: Session
+    let queue: DispatchQueue
+    let baseUrl: URL
+    
+    init(
+        baseURL: URL,
+        errorParser: AbstractErrorParser,
+        sessionManager: Session,
+        queue: DispatchQueue = DispatchQueue.global(qos: .utility)
+    ) {
+        self.baseUrl = baseURL
+        self.errorParser = errorParser
+        self.sessionManager = sessionManager
+        self.queue = queue
+    }
 }
 
 extension Product: ProductRequestFactory {
     func catalog(completionHandler: @escaping (AFDataResponse<[ProductResult]>) -> Void) {
-        let catalog = [
-            ProductResult(id: 123, name: "Ноутбук", price: 45600),
-            ProductResult(id: 456, name: "Мышка", price: 1000),
-        ]
-        let result = Result<[ProductResult], AFError>.success(catalog)
-        let response = AFDataResponse<[ProductResult]>(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        completionHandler(response)
+        let requestModel = Catalog(baseUrl: self.baseUrl)
+        self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func product(by id: Int, completionHandler: @escaping (AFDataResponse<GoodResult>) -> Void) {
-        let good = GoodResult(result: 1, name: "Ноутбук", price: 45600, description: "Мощный игровой ноутбук")
-        let result = Result<GoodResult, AFError>.success(good)
-        let response = AFDataResponse<GoodResult>(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        completionHandler(response)
+        let requestModel = Good(baseUrl: self.baseUrl, id: id)
+        self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
+
+extension Product {
+    struct Catalog: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .get
+        let path: String = "catalogData.json"
+    
+        var parameters: Parameters? {
+            return [:]
+        }
+    }
+    
+    struct Good: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .get
+        let path: String = "getGoodById.json"
+    
+        let id: Int
+        var parameters: Parameters? {
+            return [
+                "id": id,
+            ]
+        }
+    }
+}
+

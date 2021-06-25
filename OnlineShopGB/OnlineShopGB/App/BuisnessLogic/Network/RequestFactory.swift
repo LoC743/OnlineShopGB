@@ -31,7 +31,8 @@ class RequestFactory {
     }
     
     func makeProductRequestFatory() -> ProductRequestFactory {
+        let errorParser = makeErrorParser()
         
-        return Product()
+        return Product(baseURL: StringResources.baseURL, errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 }
