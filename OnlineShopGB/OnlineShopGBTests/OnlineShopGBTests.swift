@@ -101,5 +101,59 @@ class OnlineShopGBTests: XCTestCase {
         
         waitForExpectations(timeout: 10)
     }
+    
+    // ******************************
+    // ***** Product Testing ********
+    // ******************************
 
+    func testCatalogData() throws {
+        let product = requestFactory.makeProductRequestFatory()
+        
+        let catalogData = expectation(description: "catalog")
+        
+        product.catalog { response in
+            switch response.result {
+            case .success(let catalog):
+                XCTAssertEqual(catalog.count, 2)
+                
+                let firstProduct = catalog[0]
+                XCTAssertEqual(firstProduct.id, 123)
+                XCTAssertEqual(firstProduct.name, "Ноутбук")
+                XCTAssertEqual(firstProduct.price, 45600)
+                
+                let secondProduct = catalog[1]
+                XCTAssertEqual(secondProduct.id, 456)
+                XCTAssertEqual(secondProduct.name, "Мышка")
+                XCTAssertEqual(secondProduct.price, 1000)
+                
+                catalogData.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testProductByID() throws {
+        let product = requestFactory.makeProductRequestFatory()
+        
+        let productByID = expectation(description: "productByID")
+        
+        product.product(by: 123) { response in
+            switch response.result {
+            case .success(let good):
+                XCTAssertEqual(good.result, 1)
+                XCTAssertEqual(good.name, "Ноутбук")
+                XCTAssertEqual(good.price, 45600)
+                XCTAssertEqual(good.description, "Мощный игровой ноутбук")
+                
+                productByID.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        
+        waitForExpectations(timeout: 10)
+    }
 }
