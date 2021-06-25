@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "75A3F172-6510-4F20-81CA-690805298B55",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:OnlineShopGB.xcodeproj",
+      "identifier" : "8AF0D25A267CA16700FED02D",
+      "name" : "OnlineShopGB"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:OnlineShopGB.xcodeproj",
+        "identifier" : "8AF0D270267CA16800FED02D",
+        "name" : "OnlineShopGBTests"
+      }
+    }
+  ],
+  "version" : 1
+}
