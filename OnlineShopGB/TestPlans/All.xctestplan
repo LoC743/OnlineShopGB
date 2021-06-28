@@ -9,7 +9,15 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:OnlineShopGB.xcodeproj",
+          "identifier" : "8AF0D25A267CA16700FED02D",
+          "name" : "OnlineShopGB"
+        }
+      ]
+    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:OnlineShopGB.xcodeproj",
       "identifier" : "8AF0D25A267CA16700FED02D",

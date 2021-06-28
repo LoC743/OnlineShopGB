@@ -20,9 +20,8 @@ class OnlineShopGBTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    // ******************************
-    // ******* Auth Testing *********
-    // ******************************
+    
+    // MARK: Auth Testing
 
     func testAuthLogin() throws {
         let auth = requestFactory.makeAuthRequestFatory()
@@ -102,10 +101,9 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // ******************************
-    // ***** Product Testing ********
-    // ******************************
-
+    
+    // MARK: Product Testing
+    
     func testCatalogData() throws {
         let product = requestFactory.makeProductRequestFatory()
         
