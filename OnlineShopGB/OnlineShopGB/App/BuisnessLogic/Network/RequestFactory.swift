@@ -27,6 +27,12 @@ class RequestFactory {
     func makeAuthRequestFatory() -> AuthRequestFactory {
         let errorParser = makeErrorParser()
         
-        return Auth(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return Auth(baseURL: StringResources.baseURL, errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+    
+    func makeProductRequestFatory() -> ProductRequestFactory {
+        let errorParser = makeErrorParser()
+        
+        return Product(baseURL: StringResources.baseURL, errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 }

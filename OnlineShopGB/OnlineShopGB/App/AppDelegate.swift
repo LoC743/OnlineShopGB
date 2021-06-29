@@ -80,4 +80,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func catalogDataRequestFactory() {
+        let product = requestFactory.makeProductRequestFatory()
+        product.catalog { response in
+            switch response.result {
+            case .success(let catalog):
+                print(catalog)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func goodByIDRequestFactory() {
+        let product = requestFactory.makeProductRequestFatory()
+        product.product(by: 123) { response in
+            switch response.result {
+            case .success(let good):
+                print(good)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
