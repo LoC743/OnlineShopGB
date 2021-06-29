@@ -12,13 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    let requestFactory = RequestFactory()
-    
-    var token: String? // Auth token
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        authRequestFactory()
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = ViewController()
@@ -26,82 +20,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         
         return true
-    }
-    
-    func authRequestFactory() {
-        let auth = requestFactory.makeAuthRequestFatory()
-        auth.login(userName: "Somebody", password: "mypassword") { response in
-            switch response.result {
-            case .success(let login):
-                print(login)
-                self.token = login.authToken
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func logoutRequestFactory() {
-        guard let token = self.token else { return }
-        
-        let auth = requestFactory.makeAuthRequestFatory()
-        auth.logout(authToken: token) { response in
-            switch response.result {
-            case .success(let logout):
-                print(logout)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func signUpRequestFactory() {
-        let auth = requestFactory.makeAuthRequestFatory()
-        auth.signUp(userName: "Somebody", password: "mypassword") { response in
-            switch response.result {
-            case .success(let signUp):
-                print(signUp)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func updateUserDataRequestFactory() {
-        guard let token = self.token else { return }
-        
-        let auth = requestFactory.makeAuthRequestFatory()
-        auth.updateUserData(authToken: token, userName: "Somebody", password: "mypassword") { response in
-            switch response.result {
-            case .success(let update):
-                print(update)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func catalogDataRequestFactory() {
-        let product = requestFactory.makeProductRequestFatory()
-        product.catalog { response in
-            switch response.result {
-            case .success(let catalog):
-                print(catalog)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func goodByIDRequestFactory() {
-        let product = requestFactory.makeProductRequestFatory()
-        product.product(by: 123) { response in
-            switch response.result {
-            case .success(let good):
-                print(good)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
 }

@@ -20,3 +20,13 @@ struct User: Codable {
         case lastname = "user_lastname"
     }
 }
+
+struct UserData {
+    var id: Int
+    var username: String
+    var password: String
+    var email: String
+    var gender: String
+    var creditCard: String
+    var bio: String
+}

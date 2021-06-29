@@ -23,7 +23,7 @@ class OnlineShopGBTests: XCTestCase {
     
     // MARK: Auth Testing
 
-    func testAuthLogin() throws {
+    func testLogin() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let signIn = expectation(description: "login")
@@ -32,7 +32,6 @@ class OnlineShopGBTests: XCTestCase {
             switch response.result {
             case .success(let login):
                 XCTAssertEqual(login.result, 1)
-                XCTAssertEqual(login.authToken, "some_authorizaion_token")
                 XCTAssertEqual(login.user.id, 123)
                 XCTAssertEqual(login.user.login, "geekbrains")
                 XCTAssertEqual(login.user.name, "John")
@@ -46,12 +45,12 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testAuthLogout() throws {
+    func testLogout() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let signOut = expectation(description: "logout")
         
-        auth.logout(authToken: "some_authorizaion_token") { response in
+        auth.logout(userID: 123) { response in
             switch response.result {
             case .success(let logout):
                 XCTAssertEqual(logout.result, 1)
@@ -64,12 +63,21 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testSignUpLogout() throws {
+    func testSignUp() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let signUpExpect = expectation(description: "signup")
         
-        auth.signUp(userName: "Somebody", password: "mypassword") { response in
+        let user = UserData(
+            id: 123,
+            username: "Somebody",
+            password: "OnceToldMe",
+            email: "some@some.ru",
+            gender: "m",
+            creditCard: "9872389-2424-234224-234",
+            bio: "This is good! I think I will switch to another language"
+        )
+        auth.signUp(userData: user) { response in
             switch response.result {
             case .success(let signUp):
                 XCTAssertEqual(signUp.result, 1)
@@ -87,8 +95,17 @@ class OnlineShopGBTests: XCTestCase {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let updateUserData = expectation(description: "update")
+        let user = UserData(
+            id: 123,
+            username: "Somebody",
+            password: "OnceToldMe",
+            email: "some@some.ru",
+            gender: "m",
+            creditCard: "9872389-2424-234224-234",
+            bio: "This is good! I think I will switch to another language"
+        )
         
-        auth.updateUserData(authToken: "some_authorizaion_token", userName: "Somebody", password: "mypassword") { response in
+        auth.updateUserData(userData: user) { response in
             switch response.result {
             case .success(let update):
                 XCTAssertEqual(update.result, 1)

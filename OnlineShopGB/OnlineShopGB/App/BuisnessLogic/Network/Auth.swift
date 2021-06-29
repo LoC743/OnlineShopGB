@@ -33,18 +33,18 @@ extension Auth: AuthRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func logout(authToken: String, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void) {
-        let requestModel = Logout(baseUrl: baseUrl, authToken: authToken)
+    func logout(userID: Int, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void) {
+        let requestModel = Logout(baseUrl: baseUrl, userID: userID)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func signUp(userName: String, password: String, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
-        let requestModel = SignUp(baseUrl: baseUrl, login: userName, password: password)
+    func signUp(userData: UserData, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
+        let requestModel = SignUp(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func updateUserData(authToken: String, userName: String, password: String, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
-        let requestModel = UpdateUserData(baseUrl: baseUrl, authToken: authToken, login: userName, password: password)
+    func updateUserData(userData: UserData, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
+        let requestModel = UpdateUserData(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -52,8 +52,8 @@ extension Auth: AuthRequestFactory {
 extension Auth {
     struct Login: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "login.json"
+        let method: HTTPMethod = .post
+        let path: String = "signin"
         
         let login: String
         let password: String
@@ -67,45 +67,51 @@ extension Auth {
     
     struct Logout: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "logout.json"
+        let method: HTTPMethod = .post
+        let path: String = "signout"
         
-        let authToken: String
+        let userID: Int
         var parameters: Parameters? {
             return [
-                "authToken": authToken,
+                "user_id": userID,
             ]
         }
     }
     
     struct SignUp: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get // .post
-        let path: String = "registerUser.json"
+        let method: HTTPMethod = .post
+        let path: String = "register"
         
-        let login: String
-        let password: String
+        let userData: UserData
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "id_user": userData.id,
+                "username": userData.username,
+                "password": userData.password,
+                "email": userData.email,
+                "gender": userData.gender,
+                "credit_card": userData.creditCard,
+                "bio": userData.bio
             ]
         }
     }
     
     struct UpdateUserData: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get // .put
-        let path: String = "changeUserData.json"
+        let method: HTTPMethod = .put
+        let path: String = "updateUserData"
         
-        let authToken: String
-        let login: String
-        let password: String
+        let userData: UserData
         var parameters: Parameters? {
             return [
-                "authToken": authToken,
-                "username": login,
-                "password": password
+                "id_user": userData.id,
+                "username": userData.username,
+                "password": userData.password,
+                "email": userData.email,
+                "gender": userData.gender,
+                "credit_card": userData.creditCard,
+                "bio": userData.bio
             ]
         }
     }
