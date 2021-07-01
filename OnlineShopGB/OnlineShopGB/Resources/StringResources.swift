@@ -8,5 +8,5 @@
 import Foundation
 
 enum StringResources {
-    static let baseURL: URL = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    static let baseURL: URL = URL(string: "https://young-retreat-01631.herokuapp.com/")!
 }

@@ -19,7 +19,7 @@ class Product: AbstractRequestFactory {
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
-        self.baseUrl = baseURL
+        self.baseUrl = URL(string: baseURL.absoluteString + "product/")!
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
@@ -42,22 +42,21 @@ extension Product {
     struct Catalog: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "catalogData.json"
+        let path: String = "catalog"
     
-        var parameters: Parameters? {
-            return [:]
-        }
+        var parameters: Parameters?
     }
     
     struct Good: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "getGoodById.json"
+        let path: String = "good"
     
         let id: Int
+        
         var parameters: Parameters? {
             return [
-                "id": id,
+                "product_id": id
             ]
         }
     }
