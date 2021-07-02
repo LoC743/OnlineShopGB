@@ -35,4 +35,10 @@ class RequestFactory {
         
         return Product(baseURL: StringResources.baseURL, errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
+    
+    func makeReviewRequestFatory() -> ReviewRequestFactory {
+        let errorParser = makeErrorParser()
+        
+        return Review(baseURL: StringResources.baseURL, errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
 }
