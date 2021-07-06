@@ -21,9 +21,10 @@ class OnlineShopGBTests: XCTestCase {
     }
 
     
-    // MARK: Auth Testing
+    // MARK: - Auth Testing
 
-    func testLogin() throws {
+    // MARK: Login
+    func testA() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let signIn = expectation(description: "login")
@@ -45,7 +46,8 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testLogout() throws {
+    // MARK: Logout
+    func testB() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let signOut = expectation(description: "logout")
@@ -63,7 +65,8 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testSignUp() throws {
+    // MARK: Sign Up
+    func testC() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let signUpExpect = expectation(description: "signup")
@@ -91,7 +94,8 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
 
-    func testUpdateUserData() throws {
+    // MARK: Update User Data
+    func testD() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let updateUserData = expectation(description: "update")
@@ -119,9 +123,10 @@ class OnlineShopGBTests: XCTestCase {
     }
     
     
-    // MARK: Product Testing
+    // MARK: - Product Testing
     
-    func testCatalogData() throws {
+    // MARK: Catalog Data
+    func testE() throws {
         let product = requestFactory.makeProductRequestFatory()
         
         let catalogData = expectation(description: "catalog")
@@ -150,7 +155,8 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testProductByID() throws {
+    // MARK: Product By ID
+    func testF() throws {
         let product = requestFactory.makeProductRequestFatory()
         
         let productByID = expectation(description: "productByID")
@@ -173,9 +179,10 @@ class OnlineShopGBTests: XCTestCase {
     }
     
     
-    // MARK: Review Testing
+    // MARK: - Review Testing
     
-    func testAddingReview() throws {
+    // MARK: Adding Review
+    func testG() throws {
         let review = requestFactory.makeReviewRequestFatory()
 
         let addReview = expectation(description: "addReview")
@@ -196,7 +203,8 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testGettingReview() throws {
+    // MARK: Getting Review
+    func testH() throws {
         let review = requestFactory.makeReviewRequestFatory()
 
         let getReviews = expectation(description: "getReviews")
@@ -223,7 +231,8 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testRemovingReview() throws {
+    // MARK: Removing Review
+    func testI() throws {
         let review = requestFactory.makeReviewRequestFatory()
         
         let removeReview = expectation(description: "removeReview")
@@ -247,6 +256,103 @@ class OnlineShopGBTests: XCTestCase {
                         XCTFail(error.localizedDescription)
                     }
                 }
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10)
+    }
+    
+    // MARK: Cart Testing
+    
+    // MARK: Add To Cart
+    func testJ() throws {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        let addToCart = expectation(description: "addToCart")
+
+        cart.add(userID: 123, productID: 123, quantity: 1) { response in
+            switch response.result {
+            case .success(let add):
+                XCTAssertEqual(add.errorMessage, nil);
+                XCTAssertEqual(add.result, 1);
+
+                addToCart.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10)
+    }
+    
+    // MARK: Getting Cart
+    func testK() throws {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        let getCart = expectation(description: "getCart")
+
+        cart.get(userID: 123) { response in
+            switch response.result {
+            case .success(let get):
+                XCTAssertEqual(get.count, 1);
+                XCTAssertEqual(get.totalPrice, 45600);
+
+                getCart.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10)
+    }
+    
+    // MARK: Removing From Cart
+    func testL() throws {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        let removeFromCart = expectation(description: "removeFromCart")
+
+        cart.remove(userID: 123, productID: 123) { response in
+            switch response.result {
+            case .success(let remove):
+                XCTAssertEqual(remove.result, 1);
+                XCTAssertEqual(remove.errorMessage, nil);
+
+                removeFromCart.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10)
+    }
+    
+    //  MARK: Paying Cart
+    func testM() throws {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        let payCart = expectation(description: "payCart")
+        
+        cart.add(userID: 123, productID: 456, quantity: 1) { response in
+            switch response.result {
+            case .success(let add):
+                XCTAssertEqual(add.errorMessage, nil);
+                XCTAssertEqual(add.result, 1);
+
+                cart.pay(userID: 123, money: 1000) { response in
+                    switch response.result {
+                    case .success(let pay):
+                        XCTAssertEqual(pay.result, 1);
+                        XCTAssertEqual(pay.errorMessage, nil);
+
+                        payCart.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                    }
+                }
+            
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
