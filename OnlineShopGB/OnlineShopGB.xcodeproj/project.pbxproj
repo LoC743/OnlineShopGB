@@ -13,6 +13,11 @@
 		8A1E1FF32685DF620087C556 /* ProductRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1E1FF22685DF620087C556 /* ProductRequestFactory.swift */; };
 		8A1E1FF52685E2890087C556 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1E1FF42685E2890087C556 /* CatalogResult.swift */; };
 		8A1E1FF72685E29B0087C556 /* GoodResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1E1FF62685E29B0087C556 /* GoodResult.swift */; };
+		8A292C77268F198600F162F6 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A292C76268F198600F162F6 /* Review.swift */; };
+		8A292C79268F199800F162F6 /* ReviewRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A292C78268F199800F162F6 /* ReviewRequestFactory.swift */; };
+		8A292C7B268F1C2000F162F6 /* AddReviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A292C7A268F1C2000F162F6 /* AddReviewResult.swift */; };
+		8A292C7D268F1C2B00F162F6 /* RemoveReviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A292C7C268F1C2B00F162F6 /* RemoveReviewResult.swift */; };
+		8A292C7F268F1C3300F162F6 /* GetReviewRestult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A292C7E268F1C3300F162F6 /* GetReviewRestult.swift */; };
 		8A91F55D2681D21B00EE7057 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F55C2681D21B00EE7057 /* AbstractErrorParser.swift */; };
 		8A91F55F2681D29100EE7057 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F55E2681D29100EE7057 /* ErrorParser.swift */; };
 		8A91F5612681D39400EE7057 /* ResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F5602681D39400EE7057 /* ResponseCodable.swift */; };
@@ -64,6 +69,11 @@
 		8A1E1FF22685DF620087C556 /* ProductRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRequestFactory.swift; sourceTree = "<group>"; };
 		8A1E1FF42685E2890087C556 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
 		8A1E1FF62685E29B0087C556 /* GoodResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodResult.swift; sourceTree = "<group>"; };
+		8A292C76268F198600F162F6 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		8A292C78268F199800F162F6 /* ReviewRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestFactory.swift; sourceTree = "<group>"; };
+		8A292C7A268F1C2000F162F6 /* AddReviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewResult.swift; sourceTree = "<group>"; };
+		8A292C7C268F1C2B00F162F6 /* RemoveReviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveReviewResult.swift; sourceTree = "<group>"; };
+		8A292C7E268F1C3300F162F6 /* GetReviewRestult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewRestult.swift; sourceTree = "<group>"; };
 		8A91F55C2681D21B00EE7057 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		8A91F55E2681D29100EE7057 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		8A91F5602681D39400EE7057 /* ResponseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodable.swift; sourceTree = "<group>"; };
@@ -179,6 +189,8 @@
 				8A1E1FF22685DF620087C556 /* ProductRequestFactory.swift */,
 				8A1E1FF02685DF1E0087C556 /* Product.swift */,
 				8A91F56F2681D5EA00EE7057 /* RequestFactory.swift */,
+				8A292C76268F198600F162F6 /* Review.swift */,
+				8A292C78268F199800F162F6 /* ReviewRequestFactory.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -272,6 +284,9 @@
 				8A91F5792681EE7000EE7057 /* SignUpResult.swift */,
 				8A1E1FF42685E2890087C556 /* CatalogResult.swift */,
 				8A1E1FF62685E29B0087C556 /* GoodResult.swift */,
+				8A292C7A268F1C2000F162F6 /* AddReviewResult.swift */,
+				8A292C7C268F1C2B00F162F6 /* RemoveReviewResult.swift */,
+				8A292C7E268F1C3300F162F6 /* GetReviewRestult.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -557,13 +572,16 @@
 			files = (
 				8A91F57A2681EE7000EE7057 /* SignUpResult.swift in Sources */,
 				8A91F57C2681EF2F00EE7057 /* UpdateUserDataResult.swift in Sources */,
+				8A292C77268F198600F162F6 /* Review.swift in Sources */,
 				8A1E1FEF2685DE7E0087C556 /* StringResources.swift in Sources */,
 				8A91F5702681D5EB00EE7057 /* RequestFactory.swift in Sources */,
 				8A91F55D2681D21B00EE7057 /* AbstractErrorParser.swift in Sources */,
 				8A1E1FF12685DF1E0087C556 /* Product.swift in Sources */,
+				8A292C7F268F1C3300F162F6 /* GetReviewRestult.swift in Sources */,
 				8A91F5782681EDB600EE7057 /* LogoutResult.swift in Sources */,
 				8A1E1FF32685DF620087C556 /* ProductRequestFactory.swift in Sources */,
 				8A91F5612681D39400EE7057 /* ResponseCodable.swift in Sources */,
+				8A292C79268F199800F162F6 /* ReviewRequestFactory.swift in Sources */,
 				8A91F56C2681D5A900EE7057 /* AuthRequestFactory.swift in Sources */,
 				8A1E1FF72685E29B0087C556 /* GoodResult.swift in Sources */,
 				8A91F5652681D52000EE7057 /* RequestRouter.swift in Sources */,
@@ -571,9 +589,11 @@
 				8A91F5672681D56D00EE7057 /* LoginResult.swift in Sources */,
 				8A1E1FF52685E2890087C556 /* CatalogResult.swift in Sources */,
 				8A91F56E2681D5E200EE7057 /* Auth.swift in Sources */,
+				8A292C7D268F1C2B00F162F6 /* RemoveReviewResult.swift in Sources */,
 				8A91F5692681D57F00EE7057 /* User.swift in Sources */,
 				8AF0D25F267CA16700FED02D /* AppDelegate.swift in Sources */,
 				8A91F5632681D4E800EE7057 /* AbstractRequestFactory.swift in Sources */,
+				8A292C7B268F1C2000F162F6 /* AddReviewResult.swift in Sources */,
 				8A91F55F2681D29100EE7057 /* ErrorParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

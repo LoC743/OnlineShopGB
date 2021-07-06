@@ -171,4 +171,87 @@ class OnlineShopGBTests: XCTestCase {
         
         waitForExpectations(timeout: 10)
     }
+    
+    
+    // MARK: Review Testing
+    
+    func testAddingReview() throws {
+        let review = requestFactory.makeReviewRequestFatory()
+
+        let addReview = expectation(description: "addReview")
+
+        review.add(userID: 123, productID: 123, text: "Отзыв") { response in
+            switch response.result {
+            case .success(let add):
+                XCTAssertEqual(add.errorMessage, nil);
+                XCTAssertEqual(add.result, 1);
+                XCTAssertEqual(add.userMessage, "Отзыв успешно добавлен.");
+
+                addReview.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testGettingReview() throws {
+        let review = requestFactory.makeReviewRequestFatory()
+
+        let getReviews = expectation(description: "getReviews")
+
+        review.get(productID: 123) { response in
+            switch response.result {
+            case .success(let reviews):
+                guard let firstReview = reviews.first else {
+                    XCTFail()
+                    return
+                }
+                
+                XCTAssertEqual(firstReview.userID, 123)
+                XCTAssertEqual(firstReview.productID, 123)
+                XCTAssertNotNil(firstReview.commentID)
+                XCTAssertEqual(firstReview.text, "Отзыв")
+                
+                getReviews.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testRemovingReview() throws {
+        let review = requestFactory.makeReviewRequestFatory()
+        
+        let removeReview = expectation(description: "removeReview")
+        
+        review.get(productID: 123) { response in
+            switch response.result {
+            case .success(let reviews):
+                guard let firstReview = reviews.first else {
+                    XCTFail()
+                    return
+                }
+                
+                review.remove(commentID: firstReview.commentID) { response in
+                    switch response.result {
+                    case .success(let remove):
+                        XCTAssertEqual(remove.errorMessage, nil);
+                        XCTAssertEqual(remove.result, 1);
+
+                        removeReview.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                    }
+                }
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10)
+    }
 }
