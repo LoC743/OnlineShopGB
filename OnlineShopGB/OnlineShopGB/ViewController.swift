@@ -26,8 +26,21 @@ class ViewController: UIViewController {
         
         self.addReview()
         self.getReview()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.removeReview()
+        }
+        
+        self.addToCart()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.getCart()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+            self.removeFromCart()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.payCart()
         }
     }
     
@@ -158,6 +171,67 @@ class ViewController: UIViewController {
             switch response.result {
             case .success(let remove):
                 print(remove)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func addToCart() {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        cart.add(userID: 123, productID: 123, quantity: 1) { response in
+            switch response.result {
+            case .success(let add):
+                print(add)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        cart.add(userID: 123, productID: 456, quantity: 1) { response in
+            switch response.result {
+            case .success(let add):
+                print(add)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getCart() {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        cart.get(userID: 123) { response in
+            switch response.result {
+            case .success(let get):
+                print(get)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func removeFromCart() {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        cart.remove(userID: 123, productID: 123) { response in
+            switch response.result {
+            case .success(let remove):
+                print(remove)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func payCart() {
+        let cart = requestFactory.makeCartRequestFatory()
+
+        cart.pay(userID: 123, money: 1000) { response in
+            switch response.result {
+            case .success(let pay):
+                print(pay)
             case .failure(let error):
                 print(error.localizedDescription)
             }
