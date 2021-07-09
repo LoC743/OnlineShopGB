@@ -41,4 +41,10 @@ class RequestFactory {
         
         return Review(baseURL: StringResources.baseURL, errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
+    
+    func makeCartRequestFatory() -> CartRequestFactory {
+        let errorParser = makeErrorParser()
+        
+        return Cart(baseURL: StringResources.baseURL, errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
 }
