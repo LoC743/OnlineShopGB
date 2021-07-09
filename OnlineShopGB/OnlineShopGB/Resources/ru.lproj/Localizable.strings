@@ -5,3 +5,16 @@
   Created by Alexey on 09.07.2021.
   
 */
+
+"usernamePlaceholder" = "Имя пользователя";
+"passwordPlaceholder" = "Пароль";
+
+"signUpButtonTitle" = "Регистрация";
+"signInButtonTitle" = "Вход";
+
+"userDoesntExistAlertTitle" = "Такого пользователя не существует!";
+"userDoesntExistAlertMessage" = "Пожалуйста, проверьте правильность написания логина и пароля.";
+"okAlertAction" = "OK";
+
+"emptyFieldsAlertTitle" = "Упс!";
+"emptyFieldsAlertMessage" = "Пожалуйста, убедитесь что вы не забыли ввести логин и пароль.";

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .magenta
         
 //        self.logout()
-        self.login()
+//        self.login()
 //        self.signUp()
 //        self.updateUserData()
 //        
@@ -70,10 +70,13 @@ class ViewController: UIViewController {
     
     func signUp() {
         let auth = requestFactory.makeAuthRequestFatory()
+
         let user = UserData(
             id: 123,
             username: "Somebody",
             password: "OnceToldMe",
+            firstName: "QWERTY",
+            lastName: "qwerty",
             email: "some@some.ru",
             gender: "m",
             creditCard: "9872389-2424-234224-234",
@@ -95,6 +98,8 @@ class ViewController: UIViewController {
             id: 123,
             username: "Somebody",
             password: "OnceToldMe",
+            firstName: "QWERTY",
+            lastName: "qwerty",
             email: "some@some.ru",
             gender: "m",
             creditCard: "9872389-2424-234224-234",
