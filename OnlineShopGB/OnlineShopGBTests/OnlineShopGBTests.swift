@@ -23,7 +23,7 @@ class OnlineShopGBTests: XCTestCase {
     
     // MARK: - Auth Testing
 
-    // MARK: Login
+    // Login
     func testA() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
@@ -46,7 +46,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Logout
+    // Logout
     func testB() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
@@ -65,7 +65,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Sign Up
+    // Sign Up
     func testC() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
@@ -94,7 +94,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
 
-    // MARK: Update User Data
+    // Update User Data
     func testD() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
@@ -125,7 +125,7 @@ class OnlineShopGBTests: XCTestCase {
     
     // MARK: - Product Testing
     
-    // MARK: Catalog Data
+    // Catalog Data
     func testE() throws {
         let product = requestFactory.makeProductRequestFatory()
         
@@ -155,7 +155,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Product By ID
+    // Product By ID
     func testF() throws {
         let product = requestFactory.makeProductRequestFatory()
         
@@ -181,7 +181,7 @@ class OnlineShopGBTests: XCTestCase {
     
     // MARK: - Review Testing
     
-    // MARK: Adding Review
+    // Adding Review
     func testG() throws {
         let review = requestFactory.makeReviewRequestFatory()
 
@@ -203,7 +203,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Getting Review
+    // Getting Review
     func testH() throws {
         let review = requestFactory.makeReviewRequestFatory()
 
@@ -231,7 +231,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Removing Review
+    // Removing Review
     func testI() throws {
         let review = requestFactory.makeReviewRequestFatory()
         
@@ -264,9 +264,9 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Cart Testing
+    // MARK: - Cart Testing
     
-    // MARK: Add To Cart
+    // Add To Cart
     func testJ() throws {
         let cart = requestFactory.makeCartRequestFatory()
 
@@ -287,7 +287,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Getting Cart
+    // Getting Cart
     func testK() throws {
         let cart = requestFactory.makeCartRequestFatory()
 
@@ -308,7 +308,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    // MARK: Removing From Cart
+    // Removing From Cart
     func testL() throws {
         let cart = requestFactory.makeCartRequestFatory()
 
@@ -329,7 +329,7 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    //  MARK: Paying Cart
+    //  Paying Cart
     func testM() throws {
         let cart = requestFactory.makeCartRequestFatory()
 
