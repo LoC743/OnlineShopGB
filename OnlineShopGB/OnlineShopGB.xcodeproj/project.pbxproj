@@ -31,6 +31,7 @@
 		8A91F5782681EDB600EE7057 /* LogoutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F5772681EDB600EE7057 /* LogoutResult.swift */; };
 		8A91F57A2681EE7000EE7057 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F5792681EE7000EE7057 /* SignUpResult.swift */; };
 		8A91F57C2681EF2F00EE7057 /* UpdateUserDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F57B2681EF2F00EE7057 /* UpdateUserDataResult.swift */; };
+		8AC7DDB5269845EE00B8D1EC /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7DDB4269845EE00B8D1EC /* Logging.swift */; };
 		8AEB14CA26946BAA006FFB06 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB14C926946BAA006FFB06 /* Cart.swift */; };
 		8AEB14CC26946BB8006FFB06 /* CartRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB14CB26946BB8006FFB06 /* CartRequestFactory.swift */; };
 		8AEB14D026946C89006FFB06 /* AddCartResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB14CF26946C89006FFB06 /* AddCartResult.swift */; };
@@ -93,6 +94,7 @@
 		8A91F5772681EDB600EE7057 /* LogoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResult.swift; sourceTree = "<group>"; };
 		8A91F5792681EE7000EE7057 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
 		8A91F57B2681EF2F00EE7057 /* UpdateUserDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserDataResult.swift; sourceTree = "<group>"; };
+		8AC7DDB4269845EE00B8D1EC /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		8AEB14C926946BAA006FFB06 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		8AEB14CB26946BB8006FFB06 /* CartRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRequestFactory.swift; sourceTree = "<group>"; };
 		8AEB14CF26946C89006FFB06 /* AddCartResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartResult.swift; sourceTree = "<group>"; };
@@ -207,6 +209,14 @@
 				8AEB14CB26946BB8006FFB06 /* CartRequestFactory.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		8AC7DDB3269845E300B8D1EC /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				8AC7DDB4269845EE00B8D1EC /* Logging.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		8AF0D252267CA16700FED02D = {
@@ -330,6 +340,7 @@
 		8AF0D294267CA32900FED02D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				8AC7DDB3269845E300B8D1EC /* Logging */,
 				8A91F55B2681D1C100EE7057 /* Network */,
 				8AF0D297267CA45600FED02D /* Extensions */,
 			);
@@ -603,6 +614,7 @@
 				8A1E1FF32685DF620087C556 /* ProductRequestFactory.swift in Sources */,
 				8A91F5612681D39400EE7057 /* ResponseCodable.swift in Sources */,
 				8A292C79268F199800F162F6 /* ReviewRequestFactory.swift in Sources */,
+				8AC7DDB5269845EE00B8D1EC /* Logging.swift in Sources */,
 				8A91F56C2681D5A900EE7057 /* AuthRequestFactory.swift in Sources */,
 				8A1E1FF72685E29B0087C556 /* GoodResult.swift in Sources */,
 				8A91F5652681D52000EE7057 /* RequestRouter.swift in Sources */,

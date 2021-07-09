@@ -16,32 +16,32 @@ class ViewController: UIViewController {
 
         view.backgroundColor = .magenta
         
-        self.logout()
+//        self.logout()
         self.login()
-        self.signUp()
-        self.updateUserData()
-        
-        self.catalog()
-        self.goodByID()
-        
-        self.addReview()
-        self.getReview()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.removeReview()
-        }
-        
-        self.addToCart()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.getCart()
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
-            self.removeFromCart()
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.payCart()
-        }
+//        self.signUp()
+//        self.updateUserData()
+//        
+//        self.catalog()
+//        self.goodByID()
+//        
+//        self.addReview()
+//        self.getReview()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            self.removeReview()
+//        }
+//        
+//        self.addToCart()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//            self.getCart()
+//        }
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+//            self.removeFromCart()
+//        }
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//            self.payCart()
+//        }
     }
     
     func login() {

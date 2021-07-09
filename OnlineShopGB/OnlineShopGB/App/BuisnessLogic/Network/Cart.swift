@@ -14,12 +14,12 @@ class Cart: AbstractRequestFactory {
     let baseUrl: URL
     
     init(
-        baseURL: URL,
+        baseURL: String,
         errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
-        self.baseUrl = URL(string: baseURL.absoluteString + "cart/")!
+        self.baseUrl = URL(string: baseURL + StringResources.cartAddURL)!
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
