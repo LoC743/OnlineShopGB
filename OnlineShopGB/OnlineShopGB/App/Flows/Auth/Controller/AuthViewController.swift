@@ -42,8 +42,8 @@ class AuthViewController: UIViewController {
     }
     
     @objc func signInButtonTapped() {
-        let username = authView.usernameTextField.text ?? ""
-        let password = authView.passwordTextField.text ?? ""
+        let username: String = authView.usernameTextField.text ?? ""
+        let password: String = authView.passwordTextField.text ?? ""
         
         guard username != "" && password != "" else {
             presenter.viewHaveEmptyFields()
@@ -54,7 +54,10 @@ class AuthViewController: UIViewController {
     }
     
     @objc func signUpButtonTapped() {
+        let username: String = authView.usernameTextField.text ?? ""
+        let password: String = authView.passwordTextField.text ?? ""
         
+        presenter.viewDidSignUp(username: username, password: password)
     }
 }
 

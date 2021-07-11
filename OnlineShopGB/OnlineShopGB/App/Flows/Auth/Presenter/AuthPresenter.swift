@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol AuthViewInput: AnyObject {
-}
+protocol AuthViewInput: AnyObject { }
 
 protocol AuthViewOutput {
     func viewDidSignIn(username: String, password: String)
     func viewHaveEmptyFields()
+    func viewDidSignUp(username: String, password: String)
 }
 
 class AuthPresenter {
@@ -56,5 +56,9 @@ extension AuthPresenter: AuthViewOutput {
     
     func viewHaveEmptyFields() {
         router.showEmptyFieldsError()
+    }
+    
+    func viewDidSignUp(username: String, password: String) {
+        router.moveToSignUpViewController(username: username, password: password)
     }
 }

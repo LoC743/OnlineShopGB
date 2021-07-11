@@ -32,7 +32,7 @@ final class AuthView: UIView {
     
     // MARK: - Constants
     
-    enum Constansts {
+    enum Constants {
         static let safeArea = UIApplication.shared.windows[0].safeAreaInsets
         
         static let usernameTextFieldTopOffset = safeArea.top + 25
@@ -56,9 +56,9 @@ final class AuthView: UIView {
     private func addUsernameTextField() {
         self.addSubview(usernameTextField)
         usernameTextField.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(Constansts.usernameTextFieldTopOffset)
-            make.left.equalTo(self).offset(Constansts.textFieldSideOffset)
-            make.right.equalTo(self).offset(-Constansts.textFieldSideOffset)
+            make.top.equalTo(self).offset(Constants.usernameTextFieldTopOffset)
+            make.left.equalTo(self).offset(Constants.textFieldSideOffset)
+            make.right.equalTo(self).offset(-Constants.textFieldSideOffset)
         }
         
         usernameTextField.placeholder = NSLocalizedString("usernamePlaceholder", comment: "")
@@ -69,9 +69,9 @@ final class AuthView: UIView {
     private func addPasswordTextField() {
         self.addSubview(passwordTextField)
         passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(usernameTextField.snp.bottom).offset(Constansts.passwordTextFiledTopOffset)
-            make.left.equalTo(self).offset(Constansts.textFieldSideOffset)
-            make.right.equalTo(self).offset(-Constansts.textFieldSideOffset)
+            make.top.equalTo(usernameTextField.snp.bottom).offset(Constants.passwordTextFiledTopOffset)
+            make.left.equalTo(self).offset(Constants.textFieldSideOffset)
+            make.right.equalTo(self).offset(-Constants.textFieldSideOffset)
         }
         
         passwordTextField.placeholder = NSLocalizedString("passwordPlaceholder", comment: "")
@@ -82,24 +82,24 @@ final class AuthView: UIView {
     private func addButtonsStackView() {
         self.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(Constansts.buttonsTopOffset)
-            make.left.equalTo(self).offset(Constansts.textFieldSideOffset)
-            make.right.equalTo(self).offset(-Constansts.textFieldSideOffset)
-            make.height.equalTo(Constansts.buttonsHeight)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(Constants.buttonsTopOffset)
+            make.left.equalTo(self).offset(Constants.textFieldSideOffset)
+            make.right.equalTo(self).offset(-Constants.textFieldSideOffset)
+            make.height.equalTo(Constants.buttonsHeight)
         }
         
         buttonsStackView.addArrangedSubview(signUpButton)
         buttonsStackView.addArrangedSubview(signInButton)
         buttonsStackView.alignment = .fill
         buttonsStackView.distribution = .fillEqually
-        buttonsStackView.spacing = Constansts.buttonsSpacing
+        buttonsStackView.spacing = Constants.buttonsSpacing
         
         signUpButton.setTitle(NSLocalizedString("signUpButtonTitle", comment: ""), for: .normal)
         signInButton.setTitle(NSLocalizedString("signInButtonTitle", comment: ""), for: .normal)
         
         [signUpButton, signInButton].forEach { button in
             button.backgroundColor = .systemBlue
-            button.layer.cornerRadius = Constansts.buttonsHeight / 2
+            button.layer.cornerRadius = Constants.buttonsHeight / 2
             button.setTitleColor(.white, for: .normal)
         }
         

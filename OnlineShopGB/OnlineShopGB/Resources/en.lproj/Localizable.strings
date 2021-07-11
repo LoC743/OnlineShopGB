@@ -17,4 +17,14 @@
 "okAlertAction" = "OK";
 
 "emptyFieldsAlertTitle" = "Warning!";
-"emptyFieldsAlertMessage" = "Please make sure that you did not forget to enter your login and password.";
+"emptyFieldsAlertMessage" = "Please make sure that you did not forget to fill fields.";
+
+"maleGender" = "Male";
+"femaleGender" = "Female";
+"helicopterGender" = "Attack helicopter";
+
+"firstnamePlaceholder" = "First name";
+"lastnamePlaceholder" = "Last name";
+"emailPlaceholder" = "email";
+"creditCardPlaceholder" = "Card number";
+"bioPlaceholder" = "About yourself";

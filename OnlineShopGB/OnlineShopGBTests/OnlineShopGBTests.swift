@@ -22,51 +22,9 @@ class OnlineShopGBTests: XCTestCase {
 
     
     // MARK: - Auth Testing
-
-    // Login
-    func testA() throws {
-        let auth = requestFactory.makeAuthRequestFatory()
-        
-        let signIn = expectation(description: "login")
-        
-        auth.login(userName: "Somebody", password: "mypassword") { response in
-            switch response.result {
-            case .success(let login):
-                XCTAssertEqual(login.result, 1)
-                XCTAssertEqual(login.user.id, 123)
-                XCTAssertEqual(login.user.login, "geekbrains")
-                XCTAssertEqual(login.user.name, "John")
-                XCTAssertEqual(login.user.lastname, "Doe")
-                signIn.fulfill()
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
-            }
-        }
-        
-        waitForExpectations(timeout: 10)
-    }
-    
-    // Logout
-    func testB() throws {
-        let auth = requestFactory.makeAuthRequestFatory()
-        
-        let signOut = expectation(description: "logout")
-        
-        auth.logout(userID: 123) { response in
-            switch response.result {
-            case .success(let logout):
-                XCTAssertEqual(logout.result, 1)
-                signOut.fulfill()
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
-            }
-        }
-        
-        waitForExpectations(timeout: 10)
-    }
     
     // Sign Up
-    func testC() throws {
+    func testA() throws {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let signUpExpect = expectation(description: "signup")
@@ -75,6 +33,8 @@ class OnlineShopGBTests: XCTestCase {
             id: 123,
             username: "Somebody",
             password: "OnceToldMe",
+            firstName: "John",
+            lastName: "Doe",
             email: "some@some.ru",
             gender: "m",
             creditCard: "9872389-2424-234224-234",
@@ -94,6 +54,48 @@ class OnlineShopGBTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
 
+    // Login
+    func testB() throws {
+        let auth = requestFactory.makeAuthRequestFatory()
+        
+        let signIn = expectation(description: "login")
+        
+        auth.login(userName: "Somebody", password: "OnceToldMe") { response in
+            switch response.result {
+            case .success(let login):
+                XCTAssertEqual(login.result, 1)
+                XCTAssertEqual(login.user?.id, 123)
+                XCTAssertEqual(login.user?.login, "Somebody")
+                XCTAssertEqual(login.user?.name, "John")
+                XCTAssertEqual(login.user?.lastname, "Doe")
+                signIn.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        
+        waitForExpectations(timeout: 10)
+    }
+    
+    // Logout
+    func testC() throws {
+        let auth = requestFactory.makeAuthRequestFatory()
+        
+        let signOut = expectation(description: "logout")
+        
+        auth.logout(userID: 123) { response in
+            switch response.result {
+            case .success(let logout):
+                XCTAssertEqual(logout.result, 1)
+                signOut.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        
+        waitForExpectations(timeout: 10)
+    }
+
     // Update User Data
     func testD() throws {
         let auth = requestFactory.makeAuthRequestFatory()
@@ -103,6 +105,8 @@ class OnlineShopGBTests: XCTestCase {
             id: 123,
             username: "Somebody",
             password: "OnceToldMe",
+            firstName: "QWERTY",
+            lastName: "qwerty",
             email: "some@some.ru",
             gender: "m",
             creditCard: "9872389-2424-234224-234",

@@ -17,4 +17,14 @@
 "okAlertAction" = "OK";
 
 "emptyFieldsAlertTitle" = "Упс!";
-"emptyFieldsAlertMessage" = "Пожалуйста, убедитесь что вы не забыли ввести логин и пароль.";
+"emptyFieldsAlertMessage" = "Пожалуйста, убедитесь что вы не забыли заполнить поля.";
+
+"maleGender" = "Мужчина";
+"femaleGender" = "Женщина";
+"helicopterGender" = "Боевой вертолет";
+
+"firstnamePlaceholder" = "Имя";
+"lastnamePlaceholder" = "Фамилия";
+"emailPlaceholder" = "email";
+"creditCardPlaceholder" = "Номер карты";
+"bioPlaceholder" = "О себе";
