@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 protocol AuthRouterInput {
     func showUserDoesntExistError()
@@ -19,7 +20,7 @@ class AuthRouter: AuthRouterInput {
     weak var viewController: UIViewController?
     
     func showUserDoesntExistError() {
-        
+        SwiftyBeaver.info("Showing alert")
         let action: UIAlertAction = UIAlertAction(
             title: NSLocalizedString("okAlertAction", comment: ""),
             style: .default,
@@ -33,7 +34,7 @@ class AuthRouter: AuthRouterInput {
     }
     
     func showEmptyFieldsError() {
-        
+        SwiftyBeaver.info("Showing alert")
         let action: UIAlertAction = UIAlertAction(
             title: NSLocalizedString("okAlertAction", comment: ""),
             style: .default,
@@ -47,6 +48,7 @@ class AuthRouter: AuthRouterInput {
     }
     
     func moveToMainViewController() {
+        SwiftyBeaver.info("Moving to main view controller after successfull sign in")
         let mainViewController = ViewController()
         mainViewController.modalPresentationStyle = .fullScreen
         
@@ -54,6 +56,7 @@ class AuthRouter: AuthRouterInput {
     }
     
     func moveToSignUpViewController(username: String, password: String) {
+        SwiftyBeaver.info("Moving to Sign Up")
         let signUpViewController = FillUserDataBuilder.buildSignUp(username: username, password: password)
         viewController?.present(signUpViewController, animated: true, completion: nil)
     }

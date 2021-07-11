@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 class AuthViewController: UIViewController {
     
@@ -42,6 +43,7 @@ class AuthViewController: UIViewController {
     }
     
     @objc func signInButtonTapped() {
+        SwiftyBeaver.info("Sign In button pressed")
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""
         
@@ -54,6 +56,7 @@ class AuthViewController: UIViewController {
     }
     
     @objc func signUpButtonTapped() {
+        SwiftyBeaver.info("Sign Up button pressed")
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""
         

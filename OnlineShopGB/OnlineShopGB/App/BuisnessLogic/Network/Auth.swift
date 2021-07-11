@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import SwiftyBeaver
 
 class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
@@ -29,21 +30,25 @@ class Auth: AbstractRequestFactory {
 extension Auth: AuthRequestFactory {
     
     func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
+        SwiftyBeaver.info("Requesting SignIn - Login..")
         let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func logout(userID: Int, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void) {
+        SwiftyBeaver.info("Requesting Logout..")
         let requestModel = Logout(baseUrl: baseUrl, userID: userID)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func signUp(userData: User, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
+        SwiftyBeaver.info("Requesting SignUp - Register..")
         let requestModel = SignUp(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func updateUserData(userData: User, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
+        SwiftyBeaver.info("Requesting pdateUserData..")
         let requestModel = UpdateUserData(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }

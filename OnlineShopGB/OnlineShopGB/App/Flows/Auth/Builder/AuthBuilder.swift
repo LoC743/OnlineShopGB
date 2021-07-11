@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 class AuthBuilder {
     static func build() -> (UIViewController & AuthViewInput) {
+        SwiftyBeaver.info("Building Sign In Controller")
         let interactor = AuthInteractor()
         let router = AuthRouter()
 

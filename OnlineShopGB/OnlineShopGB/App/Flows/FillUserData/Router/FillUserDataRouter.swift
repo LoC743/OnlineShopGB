@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 protocol FillUserDataRouterInput {
     func showEmptyFieldsError()
@@ -18,7 +19,7 @@ class FillUserDataRouter: FillUserDataRouterInput {
     weak var viewController: UIViewController?
     
     func showEmptyFieldsError() {
-        
+        SwiftyBeaver.info("Showing alert")
         let action: UIAlertAction = UIAlertAction(
             title: NSLocalizedString("okAlertAction", comment: ""),
             style: .default,
@@ -32,6 +33,7 @@ class FillUserDataRouter: FillUserDataRouterInput {
     }
     
     func moveToMainViewController() {
+        SwiftyBeaver.info("Moving to main view controller")
         let mainViewController = ViewController()
         mainViewController.modalPresentationStyle = .fullScreen
         
@@ -39,6 +41,7 @@ class FillUserDataRouter: FillUserDataRouterInput {
     }
     
     func dismiss() {
+        SwiftyBeaver.info("Close this view controller")
         viewController?.dismiss(animated: true, completion: nil)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import SwiftyBeaver
 
 protocol FillUserDataInteractorInput {
     func signUp(user: User, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void)
@@ -20,10 +21,12 @@ class FillUserDataInteractor: FillUserDataInteractorInput {
     }()
     
     func signUp(user: User, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
+        SwiftyBeaver.info("AuthRequestFactory.signUp")
         authService.signUp(userData: user, completionHandler: completionHandler)
     }
     
     func updateUserData(user: User, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
+        SwiftyBeaver.info("AuthRequestFactory.updateUserData")
         authService.updateUserData(userData: user, completionHandler: completionHandler)
     }
 }

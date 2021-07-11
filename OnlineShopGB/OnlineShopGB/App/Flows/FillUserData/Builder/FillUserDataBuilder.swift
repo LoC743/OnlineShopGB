@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 class FillUserDataBuilder {
     static func buildSignUp(username: String, password: String) -> UIViewController {
+        SwiftyBeaver.info("Creating Sign Up Controller(navigation)")
         let interactor = FillUserDataInteractor()
         let router = FillUserDataRouter()
 
@@ -25,6 +27,7 @@ class FillUserDataBuilder {
     }
     
     static func buildUpdateUserData() -> UIViewController {
+        SwiftyBeaver.info("Creating Update User Data Controller(navigation)")
         let interactor = FillUserDataInteractor()
         let router = FillUserDataRouter()
 

@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.4.1)
   - SnapKit (5.0.1)
+  - SwiftyBeaver (1.9.5)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
   - SnapKit (~> 5.0.0)
+  - SwiftyBeaver
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - SnapKit
+    - SwiftyBeaver
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: 03c1b770f0de4136f7ca05c6fd9a027368124df5
+PODFILE CHECKSUM: cfdc394e79eecdabc50bfe654c907c739331a5d7
 
 COCOAPODS: 1.10.0

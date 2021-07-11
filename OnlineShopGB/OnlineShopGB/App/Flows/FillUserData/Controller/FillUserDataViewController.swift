@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 class FillUserDataViewController: UIViewController {
     
@@ -58,6 +59,7 @@ class FillUserDataViewController: UIViewController {
         fillUserDataView.genderPickerView.delegate = self
         fillUserDataView.genderPickerView.dataSource = self
         
+        SwiftyBeaver.info("current mode: \(mode)")
         switch mode {
         case .signUp:
             setupSignUpButton()
@@ -72,7 +74,7 @@ class FillUserDataViewController: UIViewController {
             title: NSLocalizedString("signUpButtonTitle", comment: ""),
             style: .done,
             target: self,
-            action: #selector(signUp)
+            action: #selector(signUpTapped)
         )
     }
     
@@ -81,11 +83,12 @@ class FillUserDataViewController: UIViewController {
             title: NSLocalizedString("updateUserDataTitle", comment: ""),
             style: .done,
             target: self,
-            action: #selector(updateUserData)
+            action: #selector(updateUserDataTapped)
         )
     }
     
     private func getUserData() -> User? {
+        SwiftyBeaver.info("Collecting user data from fields")
         let username = fillUserDataView.usernameTextField.text ?? ""
         let password = fillUserDataView.passwordTextField.text ?? ""
         let firstname = fillUserDataView.firstnameTextField.text ?? ""
@@ -102,6 +105,7 @@ class FillUserDataViewController: UIViewController {
               creditCard != "" &&
               bio != ""
         else {
+            SwiftyBeaver.warning("At least one field is empty")
             return nil
         }
         
@@ -128,7 +132,8 @@ class FillUserDataViewController: UIViewController {
         return user
     }
     
-    @objc private func signUp() {
+    @objc private func signUpTapped() {
+        SwiftyBeaver.info("User pressed sign up navBar button")
         guard let user = getUserData() else {
             presenter.viewHaveEmptyFields()
             return
@@ -136,7 +141,8 @@ class FillUserDataViewController: UIViewController {
         presenter.viewDidSignUp(user: user)
     }
     
-    @objc private func updateUserData() {
+    @objc private func updateUserDataTapped() {
+        SwiftyBeaver.info("User pressed update data navBar button")
         guard let user = getUserData() else {
             presenter.viewHaveEmptyFields()
             return
@@ -145,7 +151,11 @@ class FillUserDataViewController: UIViewController {
     }
     
     private func fillFieldWithUserSession() {
-        guard let userData = UserSession.shared.userData else { return }
+        SwiftyBeaver.info("Filling user data fields with saved data")
+        guard let userData = UserSession.shared.userData else {
+            SwiftyBeaver.info("UserSesson does not have saved user data")
+            return
+        }
         
         fillUserDataView.usernameTextField.text = userData.username
         fillUserDataView.passwordTextField.text = userData.password
@@ -162,6 +172,7 @@ class FillUserDataViewController: UIViewController {
     }
     
     func setupInitialFields(username: String, password: String) {
+        SwiftyBeaver.info("Setting username and password from previous view controller")
         fillUserDataView.usernameTextField.text = username
         fillUserDataView.passwordTextField.text = password
     }
