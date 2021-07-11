@@ -11,6 +11,7 @@
 
 "signUpButtonTitle" = "Регистрация";
 "signInButtonTitle" = "Вход";
+"updateUserDataTitle" = "Изменить";
 
 "userDoesntExistAlertTitle" = "Такого пользователя не существует!";
 "userDoesntExistAlertMessage" = "Пожалуйста, проверьте правильность написания логина и пароля.";

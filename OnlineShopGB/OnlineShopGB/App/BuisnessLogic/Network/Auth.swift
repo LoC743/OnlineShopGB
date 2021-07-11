@@ -38,12 +38,12 @@ extension Auth: AuthRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func signUp(userData: UserData, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
+    func signUp(userData: User, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
         let requestModel = SignUp(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func updateUserData(userData: UserData, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
+    func updateUserData(userData: User, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
         let requestModel = UpdateUserData(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -83,14 +83,14 @@ extension Auth {
         let method: HTTPMethod = .post
         let path: String = "register"
         
-        let userData: UserData
+        let userData: User
         var parameters: Parameters? {
             return [
                 "id_user": userData.id,
                 "username": userData.username,
                 "password": userData.password,
-                "first_name": userData.firstName,
-                "last_name": userData.lastName,
+                "first_name": userData.firstname,
+                "last_name": userData.lastname,
                 "email": userData.email,
                 "gender": userData.gender,
                 "credit_card": userData.creditCard,
@@ -104,14 +104,14 @@ extension Auth {
         let method: HTTPMethod = .put
         let path: String = "updateUserData"
         
-        let userData: UserData
+        let userData: User
         var parameters: Parameters? {
             return [
                 "id_user": userData.id,
                 "username": userData.username,
                 "password": userData.password,
-                "first_name": userData.firstName,
-                "last_name": userData.lastName,
+                "first_name": userData.firstname,
+                "last_name": userData.lastname,
                 "email": userData.email,
                 "gender": userData.gender,
                 "credit_card": userData.creditCard,

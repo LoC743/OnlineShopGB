@@ -29,12 +29,12 @@ class OnlineShopGBTests: XCTestCase {
         
         let signUpExpect = expectation(description: "signup")
         
-        let user = UserData(
+        let user = User(
             id: 123,
             username: "Somebody",
             password: "OnceToldMe",
-            firstName: "John",
-            lastName: "Doe",
+            firstname: "John",
+            lastname: "Doe",
             email: "some@some.ru",
             gender: "m",
             creditCard: "9872389-2424-234224-234",
@@ -65,8 +65,8 @@ class OnlineShopGBTests: XCTestCase {
             case .success(let login):
                 XCTAssertEqual(login.result, 1)
                 XCTAssertEqual(login.user?.id, 123)
-                XCTAssertEqual(login.user?.login, "Somebody")
-                XCTAssertEqual(login.user?.name, "John")
+                XCTAssertEqual(login.user?.username, "Somebody")
+                XCTAssertEqual(login.user?.firstname, "John")
                 XCTAssertEqual(login.user?.lastname, "Doe")
                 signIn.fulfill()
             case .failure(let error):
@@ -101,12 +101,12 @@ class OnlineShopGBTests: XCTestCase {
         let auth = requestFactory.makeAuthRequestFatory()
         
         let updateUserData = expectation(description: "update")
-        let user = UserData(
+        let user = User(
             id: 123,
             username: "Somebody",
             password: "OnceToldMe",
-            firstName: "QWERTY",
-            lastName: "qwerty",
+            firstname: "QWERTY",
+            lastname: "qwerty",
             email: "some@some.ru",
             gender: "m",
             creditCard: "9872389-2424-234224-234",

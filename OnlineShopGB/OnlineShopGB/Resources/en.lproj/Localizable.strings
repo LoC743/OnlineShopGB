@@ -11,6 +11,7 @@
 
 "signUpButtonTitle" = "Sign Up";
 "signInButtonTitle" = "Sign In";
+"updateUserDataTitle" = "Change";
 
 "userDoesntExistAlertTitle" = "That user does not exist!";
 "userDoesntExistAlertMessage" = "Please make sure that you've entered your login and password correctly.";

@@ -24,12 +24,13 @@
 		8A2A6DE026984A0B00193F6E /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A6DDF26984A0B00193F6E /* AuthPresenter.swift */; };
 		8A2A6DE226984A1300193F6E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A6DE126984A1300193F6E /* AuthViewController.swift */; };
 		8A2A6DE426984A2600193F6E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A6DE326984A2600193F6E /* AuthView.swift */; };
-		8A59B602269B15F4002E5E3A /* SignUpBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B601269B15F4002E5E3A /* SignUpBuilder.swift */; };
-		8A59B604269B168D002E5E3A /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B603269B168D002E5E3A /* SignUpRouter.swift */; };
-		8A59B606269B169A002E5E3A /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B605269B169A002E5E3A /* SignUpInteractor.swift */; };
-		8A59B608269B16A2002E5E3A /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B607269B16A2002E5E3A /* SignUpPresenter.swift */; };
-		8A59B60A269B16AD002E5E3A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B609269B16AD002E5E3A /* SignUpViewController.swift */; };
-		8A59B60C269B16B6002E5E3A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B60B269B16B6002E5E3A /* SignUpView.swift */; };
+		8A59B602269B15F4002E5E3A /* FillUserDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B601269B15F4002E5E3A /* FillUserDataBuilder.swift */; };
+		8A59B604269B168D002E5E3A /* FillUserDataRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B603269B168D002E5E3A /* FillUserDataRouter.swift */; };
+		8A59B606269B169A002E5E3A /* FillUserDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B605269B169A002E5E3A /* FillUserDataInteractor.swift */; };
+		8A59B608269B16A2002E5E3A /* FillUserDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B607269B16A2002E5E3A /* FillUserDataPresenter.swift */; };
+		8A59B60A269B16AD002E5E3A /* FillUserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B609269B16AD002E5E3A /* FillUserDataViewController.swift */; };
+		8A59B60C269B16B6002E5E3A /* FillUserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B60B269B16B6002E5E3A /* FillUserDataView.swift */; };
+		8A59B611269B4D0E002E5E3A /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59B610269B4D0E002E5E3A /* UserSession.swift */; };
 		8A91F55D2681D21B00EE7057 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F55C2681D21B00EE7057 /* AbstractErrorParser.swift */; };
 		8A91F55F2681D29100EE7057 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F55E2681D29100EE7057 /* ErrorParser.swift */; };
 		8A91F5612681D39400EE7057 /* ResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F5602681D39400EE7057 /* ResponseCodable.swift */; };
@@ -43,7 +44,6 @@
 		8A91F5782681EDB600EE7057 /* LogoutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F5772681EDB600EE7057 /* LogoutResult.swift */; };
 		8A91F57A2681EE7000EE7057 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F5792681EE7000EE7057 /* SignUpResult.swift */; };
 		8A91F57C2681EF2F00EE7057 /* UpdateUserDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F57B2681EF2F00EE7057 /* UpdateUserDataResult.swift */; };
-		8AC7DDB5269845EE00B8D1EC /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7DDB4269845EE00B8D1EC /* Logging.swift */; };
 		8AD109E3269856D6001BE8F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8AD109E5269856D6001BE8F2 /* Localizable.strings */; };
 		8AD109E8269862FF001BE8F2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD109E7269862FF001BE8F2 /* UIViewController+Extensions.swift */; };
 		8AEB14CA26946BAA006FFB06 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB14C926946BAA006FFB06 /* Cart.swift */; };
@@ -101,12 +101,13 @@
 		8A2A6DDF26984A0B00193F6E /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		8A2A6DE126984A1300193F6E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8A2A6DE326984A2600193F6E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		8A59B601269B15F4002E5E3A /* SignUpBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBuilder.swift; sourceTree = "<group>"; };
-		8A59B603269B168D002E5E3A /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
-		8A59B605269B169A002E5E3A /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
-		8A59B607269B16A2002E5E3A /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
-		8A59B609269B16AD002E5E3A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		8A59B60B269B16B6002E5E3A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		8A59B601269B15F4002E5E3A /* FillUserDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillUserDataBuilder.swift; sourceTree = "<group>"; };
+		8A59B603269B168D002E5E3A /* FillUserDataRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillUserDataRouter.swift; sourceTree = "<group>"; };
+		8A59B605269B169A002E5E3A /* FillUserDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillUserDataInteractor.swift; sourceTree = "<group>"; };
+		8A59B607269B16A2002E5E3A /* FillUserDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillUserDataPresenter.swift; sourceTree = "<group>"; };
+		8A59B609269B16AD002E5E3A /* FillUserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillUserDataViewController.swift; sourceTree = "<group>"; };
+		8A59B60B269B16B6002E5E3A /* FillUserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillUserDataView.swift; sourceTree = "<group>"; };
+		8A59B610269B4D0E002E5E3A /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		8A91F55C2681D21B00EE7057 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		8A91F55E2681D29100EE7057 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		8A91F5602681D39400EE7057 /* ResponseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodable.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		8A91F5772681EDB600EE7057 /* LogoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResult.swift; sourceTree = "<group>"; };
 		8A91F5792681EE7000EE7057 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
 		8A91F57B2681EF2F00EE7057 /* UpdateUserDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserDataResult.swift; sourceTree = "<group>"; };
-		8AC7DDB4269845EE00B8D1EC /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		8AD109DF26985690001BE8F2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8AD109E4269856D6001BE8F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8AD109E6269856D9001BE8F2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		8A59B5F9269B1569002E5E3A /* SignUp */ = {
+		8A59B5F9269B1569002E5E3A /* FillUserData */ = {
 			isa = PBXGroup;
 			children = (
 				8A59B600269B15A0002E5E3A /* Builder */,
@@ -284,13 +284,13 @@
 				8A59B5FC269B1588002E5E3A /* Controller */,
 				8A59B5FB269B157D002E5E3A /* View */,
 			);
-			path = SignUp;
+			path = FillUserData;
 			sourceTree = "<group>";
 		};
 		8A59B5FB269B157D002E5E3A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A59B60B269B16B6002E5E3A /* SignUpView.swift */,
+				8A59B60B269B16B6002E5E3A /* FillUserDataView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 		8A59B5FC269B1588002E5E3A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8A59B609269B16AD002E5E3A /* SignUpViewController.swift */,
+				8A59B609269B16AD002E5E3A /* FillUserDataViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 		8A59B5FD269B158E002E5E3A /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				8A59B607269B16A2002E5E3A /* SignUpPresenter.swift */,
+				8A59B607269B16A2002E5E3A /* FillUserDataPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -314,7 +314,7 @@
 		8A59B5FE269B1593002E5E3A /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				8A59B605269B169A002E5E3A /* SignUpInteractor.swift */,
+				8A59B605269B169A002E5E3A /* FillUserDataInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 		8A59B5FF269B159A002E5E3A /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				8A59B603269B168D002E5E3A /* SignUpRouter.swift */,
+				8A59B603269B168D002E5E3A /* FillUserDataRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -330,9 +330,17 @@
 		8A59B600269B15A0002E5E3A /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				8A59B601269B15F4002E5E3A /* SignUpBuilder.swift */,
+				8A59B601269B15F4002E5E3A /* FillUserDataBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		8A59B60F269B4CAC002E5E3A /* UserSession */ = {
+			isa = PBXGroup;
+			children = (
+				8A59B610269B4D0E002E5E3A /* UserSession.swift */,
+			);
+			path = UserSession;
 			sourceTree = "<group>";
 		};
 		8A91F55B2681D1C100EE7057 /* Network */ = {
@@ -361,14 +369,6 @@
 				8AEB14CB26946BB8006FFB06 /* CartRequestFactory.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		8AC7DDB3269845E300B8D1EC /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				8AC7DDB4269845EE00B8D1EC /* Logging.swift */,
-			);
-			path = Logging;
 			sourceTree = "<group>";
 		};
 		8AF0D252267CA16700FED02D = {
@@ -439,7 +439,7 @@
 		8AF0D28F267CA2C200FED02D /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				8A59B5F9269B1569002E5E3A /* SignUp */,
+				8A59B5F9269B1569002E5E3A /* FillUserData */,
 				8A2A6DD22698481100193F6E /* Auth */,
 			);
 			path = Flows;
@@ -495,7 +495,7 @@
 		8AF0D294267CA32900FED02D /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				8AC7DDB3269845E300B8D1EC /* Logging */,
+				8A59B60F269B4CAC002E5E3A /* UserSession */,
 				8A91F55B2681D1C100EE7057 /* Network */,
 				8AF0D297267CA45600FED02D /* Extensions */,
 			);
@@ -763,25 +763,25 @@
 				8A292C77268F198600F162F6 /* Review.swift in Sources */,
 				8A2A6DE026984A0B00193F6E /* AuthPresenter.swift in Sources */,
 				8AEB14CA26946BAA006FFB06 /* Cart.swift in Sources */,
-				8A59B608269B16A2002E5E3A /* SignUpPresenter.swift in Sources */,
+				8A59B608269B16A2002E5E3A /* FillUserDataPresenter.swift in Sources */,
 				8A1E1FEF2685DE7E0087C556 /* StringResources.swift in Sources */,
 				8A2A6DDC269849F700193F6E /* AuthRouter.swift in Sources */,
 				8A2A6DE426984A2600193F6E /* AuthView.swift in Sources */,
-				8A59B604269B168D002E5E3A /* SignUpRouter.swift in Sources */,
+				8A59B604269B168D002E5E3A /* FillUserDataRouter.swift in Sources */,
 				8A91F5702681D5EB00EE7057 /* RequestFactory.swift in Sources */,
 				8A91F55D2681D21B00EE7057 /* AbstractErrorParser.swift in Sources */,
-				8A59B602269B15F4002E5E3A /* SignUpBuilder.swift in Sources */,
+				8A59B602269B15F4002E5E3A /* FillUserDataBuilder.swift in Sources */,
 				8A1E1FF12685DF1E0087C556 /* Product.swift in Sources */,
 				8A292C7F268F1C3300F162F6 /* GetReviewRestult.swift in Sources */,
-				8A59B60C269B16B6002E5E3A /* SignUpView.swift in Sources */,
+				8A59B60C269B16B6002E5E3A /* FillUserDataView.swift in Sources */,
 				8A91F5782681EDB600EE7057 /* LogoutResult.swift in Sources */,
 				8AEB14D626946CA6006FFB06 /* PayCartResult.swift in Sources */,
 				8A1E1FF32685DF620087C556 /* ProductRequestFactory.swift in Sources */,
 				8A91F5612681D39400EE7057 /* ResponseCodable.swift in Sources */,
 				8A292C79268F199800F162F6 /* ReviewRequestFactory.swift in Sources */,
 				8A2A6DDE26984A0100193F6E /* AuthInteractor.swift in Sources */,
-				8A59B60A269B16AD002E5E3A /* SignUpViewController.swift in Sources */,
-				8AC7DDB5269845EE00B8D1EC /* Logging.swift in Sources */,
+				8A59B611269B4D0E002E5E3A /* UserSession.swift in Sources */,
+				8A59B60A269B16AD002E5E3A /* FillUserDataViewController.swift in Sources */,
 				8A2A6DDA2698493000193F6E /* AuthBuilder.swift in Sources */,
 				8A91F56C2681D5A900EE7057 /* AuthRequestFactory.swift in Sources */,
 				8A1E1FF72685E29B0087C556 /* GoodResult.swift in Sources */,
@@ -800,7 +800,7 @@
 				8AEB14D026946C89006FFB06 /* AddCartResult.swift in Sources */,
 				8A292C7B268F1C2000F162F6 /* AddReviewResult.swift in Sources */,
 				8AEB14CC26946BB8006FFB06 /* CartRequestFactory.swift in Sources */,
-				8A59B606269B169A002E5E3A /* SignUpInteractor.swift in Sources */,
+				8A59B606269B169A002E5E3A /* FillUserDataInteractor.swift in Sources */,
 				8A91F55F2681D29100EE7057 /* ErrorParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

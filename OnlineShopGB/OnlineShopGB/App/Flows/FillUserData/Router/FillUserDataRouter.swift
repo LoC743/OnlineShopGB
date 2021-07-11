@@ -1,5 +1,5 @@
 //
-//  SignUpRouter.swift
+//  FillUserDataRouter.swift
 //  OnlineShopGB
 //
 //  Created by Alexey on 11.07.2021.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-protocol SignUpRouterInput {
+protocol FillUserDataRouterInput {
     func showEmptyFieldsError()
     func moveToMainViewController()
+    func dismiss()
 }
 
-class SignUpRouter: SignUpRouterInput {
+class FillUserDataRouter: FillUserDataRouterInput {
     
     weak var viewController: UIViewController?
     
@@ -31,7 +32,13 @@ class SignUpRouter: SignUpRouterInput {
     }
     
     func moveToMainViewController() {
-        viewController?.present(ViewController(), animated: true, completion: nil)
+        let mainViewController = ViewController()
+        mainViewController.modalPresentationStyle = .fullScreen
+        
+        viewController?.present(mainViewController, animated: true, completion: nil)
     }
     
+    func dismiss() {
+        viewController?.dismiss(animated: true, completion: nil)
+    }
 }

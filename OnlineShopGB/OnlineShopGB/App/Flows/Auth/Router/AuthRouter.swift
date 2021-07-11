@@ -47,13 +47,14 @@ class AuthRouter: AuthRouterInput {
     }
     
     func moveToMainViewController() {
-        viewController?.present(ViewController(), animated: true, completion: nil)
+        let mainViewController = ViewController()
+        mainViewController.modalPresentationStyle = .fullScreen
+        
+        viewController?.present(mainViewController, animated: true, completion: nil)
     }
     
     func moveToSignUpViewController(username: String, password: String) {
-        let signUpViewController = SignUpBuilder.build(username: username, password: password)
-        
-        let navigationController = UINavigationController(rootViewController: signUpViewController)
-        viewController?.present(navigationController, animated: true, completion: nil)
+        let signUpViewController = FillUserDataBuilder.buildSignUp(username: username, password: password)
+        viewController?.present(signUpViewController, animated: true, completion: nil)
     }
 }

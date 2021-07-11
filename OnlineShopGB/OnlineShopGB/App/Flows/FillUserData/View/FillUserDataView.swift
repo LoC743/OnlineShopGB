@@ -7,7 +7,7 @@
 
 import SnapKit
 
-final class SignUpView: UIView {
+final class FillUserDataView: UIView {
     
     // MARK: - Subviews
     

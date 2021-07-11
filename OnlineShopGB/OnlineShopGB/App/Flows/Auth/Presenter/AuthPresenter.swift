@@ -35,6 +35,7 @@ extension AuthPresenter: AuthViewOutput {
                 
                 switch signIn.result {
                 case 1:
+                    UserSession.shared.userData = signIn.user
                     DispatchQueue.main.async {
                         self?.router.moveToMainViewController()
                     }
