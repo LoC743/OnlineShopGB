@@ -29,3 +29,9 @@
 "emailPlaceholder" = "email";
 "creditCardPlaceholder" = "Номер карты";
 "bioPlaceholder" = "О себе";
+
+"mainTabBar" = "Главная";
+"productTabBar" = "Каталог";
+
+"errorTitle" = "Ошибка!";
+"errorMessageProductNotFound" = "Упс! Извините такой товар не существует.";

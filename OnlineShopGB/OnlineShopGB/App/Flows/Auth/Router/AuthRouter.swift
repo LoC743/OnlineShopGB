@@ -49,10 +49,9 @@ class AuthRouter: AuthRouterInput {
     
     func moveToMainViewController() {
         SwiftyBeaver.info("Moving to main view controller after successfull sign in")
-        let mainViewController = ViewController()
-        mainViewController.modalPresentationStyle = .fullScreen
-        
-        viewController?.present(mainViewController, animated: true, completion: nil)
+        let mainViewController = MainBuilder.build()
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.setRootViewController(mainViewController)
     }
     
     func moveToSignUpViewController(username: String, password: String) {
