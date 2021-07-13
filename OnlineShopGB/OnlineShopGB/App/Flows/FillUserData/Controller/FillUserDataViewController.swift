@@ -67,6 +67,43 @@ class FillUserDataViewController: UIViewController {
             setupUpdateButton()
             fillFieldWithUserSession()
         }
+        
+        self.addTapGestureRecognizer()
+        self.delegateTextFields()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(sender:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil
+        )
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(sender:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil
+        )
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        else {
+            return
+        }
+
+        self.fillUserDataView.moveViewToTextField(with: keyboardSize)
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.fillUserDataView.restorePostion()
+    }
+    
+    private func addTapGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        fillUserDataView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        SwiftyBeaver.info("Keyboard dismissed")
+        fillUserDataView.endEditing(true)
     }
     
     private func setupSignUpButton() {
@@ -176,9 +213,17 @@ class FillUserDataViewController: UIViewController {
         fillUserDataView.usernameTextField.text = username
         fillUserDataView.passwordTextField.text = password
     }
+    
+    // MARK: - deinit
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension FillUserDataViewController: FillUserDataViewInput { }
+
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
 
 extension FillUserDataViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -192,5 +237,30 @@ extension FillUserDataViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return genderArray[row]
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension FillUserDataViewController: UITextFieldDelegate {
+    
+    private func delegateTextFields() {
+        fillUserDataView.textFieldArray.forEach { textField in
+            textField.delegate = self
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.fillUserDataView.endEditing(true)
+        
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        fillUserDataView.activeField = textField
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField){
+        fillUserDataView.activeField = nil
     }
 }

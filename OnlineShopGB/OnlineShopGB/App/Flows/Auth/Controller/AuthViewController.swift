@@ -40,9 +40,20 @@ class AuthViewController: UIViewController {
         
         self.authView.signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
         self.authView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        
+        self.addTapGestureRecognizer()
     }
     
-    @objc func signInButtonTapped() {
+    private func addTapGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        authView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        authView.endEditing(true)
+    }
+    
+    @objc private func signInButtonTapped() {
         SwiftyBeaver.info("Sign In button pressed")
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""
@@ -55,7 +66,7 @@ class AuthViewController: UIViewController {
         presenter.viewDidSignIn(username: username, password: password)
     }
     
-    @objc func signUpButtonTapped() {
+    @objc private func signUpButtonTapped() {
         SwiftyBeaver.info("Sign Up button pressed")
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""
