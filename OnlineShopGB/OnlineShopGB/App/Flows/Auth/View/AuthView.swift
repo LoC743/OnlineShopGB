@@ -63,7 +63,6 @@ final class AuthView: UIView {
         
         usernameTextField.placeholder = NSLocalizedString("usernamePlaceholder", comment: "")
         usernameTextField.borderStyle = .roundedRect
-        
     }
     
     private func addPasswordTextField() {
@@ -76,6 +75,7 @@ final class AuthView: UIView {
         
         passwordTextField.placeholder = NSLocalizedString("passwordPlaceholder", comment: "")
         passwordTextField.borderStyle = .roundedRect
+        passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
     }
 

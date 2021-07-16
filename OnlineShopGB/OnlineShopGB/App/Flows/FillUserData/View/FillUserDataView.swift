@@ -54,7 +54,6 @@ final class FillUserDataView: UIView {
         static let heightStackView: CGFloat = 330.0
         static let topGenderPickerOffset: CGFloat = 5.0
         static let sideGenderPickerOffset = 15.0
-//        static let safeTextFildOffset: CGFloat = 55.0
     }
     
     // MARK: - UI
@@ -109,6 +108,11 @@ final class FillUserDataView: UIView {
         creditCardTextField.placeholder = NSLocalizedString("creditCardPlaceholder", comment: "")
         bioTextField.placeholder = NSLocalizedString("bioPlaceholder", comment: "")
         
+        firstnameTextField.textContentType = .name
+        lastnameTextField.textContentType = .familyName
+        creditCardTextField.textContentType = .creditCardNumber
+        emailTextField.textContentType = .emailAddress
+        passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
     }
     
