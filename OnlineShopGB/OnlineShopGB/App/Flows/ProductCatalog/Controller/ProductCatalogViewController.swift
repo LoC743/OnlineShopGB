@@ -80,7 +80,13 @@ class ProductCatalogViewController: UIViewController {
     
     @objc private func openReviews() {
         SwiftyBeaver.info("Reviews button pressed.")
-        presenter.viewDidEnterReviews(for: 0)
+        guard let product = productCatalogView.popUpProductView.product,
+              let productID = productCatalogView.popUpProductView.productID else {
+            SwiftyBeaver.warning("Product data for reviews missing.")
+            return
+        }
+
+        presenter.viewDidEnterReviews(for: productID, with: product.name ?? "")
     }
     
     private func showPopUp(for productID: Int) {

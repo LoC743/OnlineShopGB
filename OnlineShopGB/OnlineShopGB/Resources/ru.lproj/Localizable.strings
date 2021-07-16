@@ -35,3 +35,16 @@
 
 "errorTitle" = "Ошибка!";
 "errorMessageProductNotFound" = "Упс! Извините такой товар не существует.";
+
+"noReviewsLabel" = "Отзывов нет.";
+"ownerLabel" = "Вы";
+"anonOwnerLabel" = "Аноним";
+
+"addNewReviewTitle" = "Новый отзыв";
+"addNewReviewMessage" = "Напишите свой отзыв:";
+"addButtonAlert" = "Добавить";
+"cancelButtonAlert" = "Отменить";
+"reviewTitle" = "Отзыв..";
+"reviewAlertActionsTitle" = "Действия с отзывом";
+"reviewAlertActionsMessage" = "Что вы хотите сделать с этим отзывом?";
+"removeButtonAlert" = "Удалить";

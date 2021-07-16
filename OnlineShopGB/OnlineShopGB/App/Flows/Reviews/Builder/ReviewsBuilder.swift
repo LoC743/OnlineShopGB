@@ -16,7 +16,7 @@ class ReviewsBuilder {
 
         let presenter = ReviewsPresenter(interactor: interactor, router: router)
         
-        let viewController = ReviewsViewController(presenter: presenter)
+        let viewController = ReviewsViewController(presenter: presenter, productID: productID)
         presenter.viewInput = viewController
         router.viewController = viewController
         

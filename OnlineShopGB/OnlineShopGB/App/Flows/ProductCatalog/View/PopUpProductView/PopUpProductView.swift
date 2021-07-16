@@ -59,6 +59,7 @@ final class PopUpProductView: UIView {
     }
     
     var productID: Int?
+    var product: GoodResult?
     
     // MARK: - UI
     
@@ -143,6 +144,7 @@ final class PopUpProductView: UIView {
         priceLabel.text = "\(product.price ?? 0) ₽"
         descriptionLabel.text = product.description
         self.productID = id
+        self.product = product
     }
 }
 

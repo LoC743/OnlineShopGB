@@ -35,3 +35,16 @@
 
 "errorTitle" = "Error!";
 "errorMessageProductNotFound" = "Oops! Sorry that product does not exist.";
+
+"noReviewsLabel" = "No reviews.";
+"ownerLabel" = "You";
+"anonOwnerLabel" = "Anonymous";
+
+"addNewReviewTitle" = "New review";
+"addNewReviewMessage" = "Enter your review:";
+"addButtonAlert" = "Add";
+"cancelButtonAlert" = "Cancel";
+"reviewTitle" = "Review..";
+"reviewAlertActionsTitle" = "Review actions";
+"reviewAlertActionsMessage" = "What do you want to do with this review?";
+"removeButtonAlert" = "Remove";

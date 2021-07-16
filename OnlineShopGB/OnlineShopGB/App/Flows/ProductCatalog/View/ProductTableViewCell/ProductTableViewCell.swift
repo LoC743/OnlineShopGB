@@ -13,8 +13,8 @@ class ProductTableViewCell: UITableViewCell {
     
     // MARK: - Subviews
     
-    lazy var productTitle = UILabel()
-    lazy var priceTitle = UILabel()
+    lazy var productLabel = UILabel()
+    lazy var priceLabel = UILabel()
     
     // MARK: - Init
     
@@ -41,30 +41,30 @@ class ProductTableViewCell: UITableViewCell {
     private func configureUI() {
         self.backgroundColor = .white
         
-        [productTitle, priceTitle].forEach { label in
+        [productLabel, priceLabel].forEach { label in
             contentView.addSubview(label)
         }
         
-        productTitle.snp.makeConstraints { make in
+        productLabel.snp.makeConstraints { make in
             make.top.equalTo(self).offset(Constants.topOffset)
             make.left.equalTo(self).offset(Constants.leftTitleOffset)
             make.bottom.equalTo(self).offset(-Constants.topOffset)
         }
         
-        priceTitle.snp.makeConstraints { make in
+        priceLabel.snp.makeConstraints { make in
             make.top.equalTo(self).offset(Constants.topOffset)
-            make.left.equalTo(productTitle)
+            make.left.equalTo(productLabel)
             make.right.equalTo(self).offset(-Constants.rightPriceOffset)
             make.bottom.equalTo(self).offset(-Constants.topOffset)
         }
         
-        priceTitle.textAlignment = .right
+        priceLabel.textAlignment = .right
     }
     
     // MARK: - Public configure cell
     
     func configure(with product: ProductResult) {
-        self.productTitle.text = product.name
-        self.priceTitle.text = "\(product.price) ₽"
+        self.productLabel.text = product.name
+        self.priceLabel.text = "\(product.price) ₽"
     }
 }

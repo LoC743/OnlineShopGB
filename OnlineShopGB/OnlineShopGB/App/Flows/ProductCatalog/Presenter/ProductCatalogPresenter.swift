@@ -15,7 +15,7 @@ protocol ProductCatalogViewInput: AnyObject {
 protocol ProductCatalogViewOutput {
     func viewDidLoadCatalog()
     func viewDidLoadProduct(by id: Int, completionHandler: @escaping (GoodResult) -> Void)
-    func viewDidEnterReviews(for productID: Int)
+    func viewDidEnterReviews(for productID: Int, with productName: String)
 }
 
 class ProductCatalogPresenter {
@@ -75,7 +75,7 @@ extension ProductCatalogPresenter: ProductCatalogViewOutput {
         }
     }
     
-    func viewDidEnterReviews(for productID: Int) {
-        self.router.moveToReviews(productID: productID)
+    func viewDidEnterReviews(for productID: Int, with productName: String) {
+        self.router.moveToReviews(productID: productID, productName: productName)
     }
 }
