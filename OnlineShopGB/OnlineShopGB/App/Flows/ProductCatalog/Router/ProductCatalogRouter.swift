@@ -8,10 +8,16 @@
 import UIKit
 import SwiftyBeaver
 
-protocol  ProductCatalogRouterInput { }
+protocol  ProductCatalogRouterInput {
+    func moveToReviews(productID: Int)
+}
 
 class  ProductCatalogRouter:  ProductCatalogRouterInput {
     
     weak var viewController: UIViewController?
     
+    func moveToReviews(productID: Int) {
+        let reviewsViewController = ReviewsBuilder.build(with: productID)
+        viewController?.navigationController?.pushViewController(reviewsViewController, animated: true)
+    }
 }

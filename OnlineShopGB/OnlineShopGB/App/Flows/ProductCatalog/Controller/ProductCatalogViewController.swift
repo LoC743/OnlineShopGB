@@ -52,6 +52,7 @@ class ProductCatalogViewController: UIViewController {
         productCatalogView.tableView.dataSource = self
         
         productCatalogView.popUpProductView.addToCartButton.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
+        productCatalogView.popUpProductView.reviewsButton.addTarget(self, action: #selector(openReviews), for: .touchUpInside)
         
         addTapGestureToBlur()
         
@@ -76,6 +77,19 @@ class ProductCatalogViewController: UIViewController {
         SwiftyBeaver.info("Hide popup view with product info.")
         productCatalogView.hidePopUp()
     }
+    
+    @objc private func openReviews() {
+        SwiftyBeaver.info("Reviews button pressed.")
+        presenter.viewDidEnterReviews(for: 0)
+    }
+    
+    private func showPopUp(for productID: Int) {
+        presenter.viewDidLoadProduct(by: productID) { [weak self] product in
+            DispatchQueue.main.async {
+                self?.productCatalogView.showPopUp(with: product, id: productID)
+            }
+        }
+    }
 }
 
 extension ProductCatalogViewController: ProductCatalogViewInput { }
@@ -99,10 +113,6 @@ extension ProductCatalogViewController: UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         
         let id = catalog[indexPath.row].id
-        presenter.viewDidLoadProduct(by: id) { [weak self] product in
-            DispatchQueue.main.async {
-                self?.productCatalogView.showPopUp(with: product)
-            }
-        }
+        showPopUp(for: id)
     }
 }

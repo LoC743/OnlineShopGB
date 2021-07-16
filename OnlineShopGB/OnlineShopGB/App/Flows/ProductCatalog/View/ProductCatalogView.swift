@@ -39,8 +39,8 @@ final class ProductCatalogView: UIView {
         static let topTableViewOffset = safeArea.top + navigationBarHeight
         static let bottomTableViewOffset = safeArea.bottom + tabBarHeight
         
-        static let popUpHeight: CGFloat = 330
-        static let popUpWidth: CGFloat = 200
+        static let popUpHeight: CGFloat = 350
+        static let popUpWidth: CGFloat = 240
         
         static let animationTime = 0.7
         static let animationDelay = 0.35
@@ -142,7 +142,7 @@ final class ProductCatalogView: UIView {
         popUpProductView.layer.opacity = 0.0
     }
     
-    func showPopUp(with product: GoodResult) {
+    func showPopUp(with product: GoodResult, id: Int) {
         UIView.animate(withDuration: Constants.animationTime, delay: 0.0, options: .curveEaseInOut) {
             self.blurPopUpBackground.layer.opacity = 0.95
             self.blurPopUpBackground.isHidden = false
@@ -151,7 +151,7 @@ final class ProductCatalogView: UIView {
         UIView.animate(withDuration: Constants.animationTime, delay: Constants.animationDelay, options: .curveEaseInOut) {
             self.popUpProductView.layer.opacity = 1.0
             self.popUpProductView.isHidden = false
-            self.popUpProductView.configure(with: product)
+            self.popUpProductView.configure(with: product, id: id)
         }
     }
     

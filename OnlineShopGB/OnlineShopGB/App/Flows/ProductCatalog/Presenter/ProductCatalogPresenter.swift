@@ -15,6 +15,7 @@ protocol ProductCatalogViewInput: AnyObject {
 protocol ProductCatalogViewOutput {
     func viewDidLoadCatalog()
     func viewDidLoadProduct(by id: Int, completionHandler: @escaping (GoodResult) -> Void)
+    func viewDidEnterReviews(for productID: Int)
 }
 
 class ProductCatalogPresenter {
@@ -72,5 +73,9 @@ extension ProductCatalogPresenter: ProductCatalogViewOutput {
                 SwiftyBeaver.error("\(error.localizedDescription)")
             }
         }
+    }
+    
+    func viewDidEnterReviews(for productID: Int) {
+        self.router.moveToReviews(productID: productID)
     }
 }
