@@ -58,6 +58,7 @@ class FillUserDataViewController: UIViewController {
         
         fillUserDataView.genderPickerView.delegate = self
         fillUserDataView.genderPickerView.dataSource = self
+        fillUserDataView.genderPickerView.selectRow(genderArray.count - 1, inComponent: 0, animated: true)
         
         SwiftyBeaver.info("current mode: \(mode)")
         switch mode {
@@ -88,8 +89,8 @@ class FillUserDataViewController: UIViewController {
         else {
             return
         }
-
-        self.fillUserDataView.moveViewToTextField(with: keyboardSize)
+        let keyboardFrame = self.view.convert(keyboardSize, from: nil)
+        self.fillUserDataView.moveViewToTextField(with: keyboardFrame)
     }
 
     @objc func keyboardWillHide(sender: NSNotification) {
