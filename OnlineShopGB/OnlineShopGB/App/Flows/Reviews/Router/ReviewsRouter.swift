@@ -32,7 +32,7 @@ class ReviewsRouter: ReviewsRouterInput {
             title: NSLocalizedString("addButtonAlert", comment: ""),
             style: .default,
             handler: { [weak alert] _ in
-                guard let textField = alert?.textFields![0] else { return }
+                guard let textField = alert?.textFields?[0] else { return }
                 
                 callback(textField.text ?? "", id)
             }
