@@ -66,7 +66,9 @@ extension ProductCatalogPresenter: ProductCatalogViewOutput {
                     )
                     completionHandler(errorProduct)
                 default:
-                    SwiftyBeaver.warning("Unexpected result: \(product.result) with error: \(String(describing: product.errorMessage))")
+                    SwiftyBeaver.warning(
+                        "Unexpected result: \(product.result) with error: \(String(describing: product.errorMessage))"
+                    )
                     return
                 }
             case .failure(let error):

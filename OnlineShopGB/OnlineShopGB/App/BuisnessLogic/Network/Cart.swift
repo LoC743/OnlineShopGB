@@ -28,7 +28,11 @@ class Cart: AbstractRequestFactory {
 }
 
 extension Cart: CartRequestFactory {
-    func add(userID: Int, productID: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<AddCartResult>) -> Void) {
+    func add(userID: Int,
+             productID: Int,
+             quantity: Int,
+             completionHandler: @escaping (AFDataResponse<AddCartResult>) -> Void
+    ) {
         SwiftyBeaver.info("Requesting Cart - add..")
         let requestModel = Add(baseUrl: self.baseUrl, userID: userID, productID: productID, quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)

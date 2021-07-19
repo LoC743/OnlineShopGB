@@ -143,12 +143,18 @@ final class ProductCatalogView: UIView {
     }
     
     func showPopUp(with product: GoodResult, id: Int) {
-        UIView.animate(withDuration: Constants.animationTime, delay: 0.0, options: .curveEaseInOut) {
+        UIView.animate(withDuration: Constants.animationTime,
+                       delay: 0.0,
+                       options: .curveEaseInOut
+        ) {
             self.blurPopUpBackground.layer.opacity = 0.95
             self.blurPopUpBackground.isHidden = false
         }
         
-        UIView.animate(withDuration: Constants.animationTime, delay: Constants.animationDelay, options: .curveEaseInOut) {
+        UIView.animate(withDuration: Constants.animationTime,
+                       delay: Constants.animationDelay,
+                       options: .curveEaseInOut
+        ) {
             self.popUpProductView.layer.opacity = 1.0
             self.popUpProductView.isHidden = false
             self.popUpProductView.configure(with: product, id: id)
@@ -156,13 +162,19 @@ final class ProductCatalogView: UIView {
     }
     
     func hidePopUp() {
-        UIView.animate(withDuration: Constants.animationTime, delay: 0.0, options: .curveEaseInOut) {
+        UIView.animate(withDuration: Constants.animationTime,
+                       delay: 0.0,
+                       options: .curveEaseInOut
+        ) {
             self.popUpProductView.layer.opacity = 0.0
         } completion: { finished in
             self.popUpProductView.isHidden = false
         }
         
-        UIView.animate(withDuration: Constants.animationTime, delay: Constants.animationDelay, options: .curveEaseInOut) {
+        UIView.animate(withDuration: Constants.animationTime,
+                       delay: Constants.animationDelay,
+                       options: .curveEaseInOut
+        ) {
             self.blurPopUpBackground.layer.opacity = 0.0
         } completion: { finished in
             self.blurPopUpBackground.isHidden = true

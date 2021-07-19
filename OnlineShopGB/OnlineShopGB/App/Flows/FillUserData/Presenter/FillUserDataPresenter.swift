@@ -44,7 +44,9 @@ extension FillUserDataPresenter: FillUserDataViewOutput {
                     }
                     break
                 default:
-                    SwiftyBeaver.warning("Unexpected result: \(signUp.result) with error: \(String(describing: signUp.errorMessage))")
+                    SwiftyBeaver.warning(
+                        "Unexpected result: \(signUp.result) with error: \(String(describing: signUp.errorMessage))"
+                    )
                     return
                 }
 
@@ -73,7 +75,9 @@ extension FillUserDataPresenter: FillUserDataViewOutput {
                     }
                     break
                 default:
-                    SwiftyBeaver.warning("Unexpected result: \(update.result) with error: \(String(describing: update.errorMessage))")
+                    SwiftyBeaver.warning(
+                        "Unexpected result: \(update.result) with error: \(String(describing: update.errorMessage))"
+                    )
                     return
                 }
 

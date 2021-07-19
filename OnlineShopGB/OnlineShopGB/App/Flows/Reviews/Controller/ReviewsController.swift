@@ -54,9 +54,17 @@ class ReviewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addNewReview))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: .add,
+            style: .plain,
+            target: self,
+            action: #selector(addNewReview)
+        )
         
-        reviewsView.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: ReviewTableViewCell.reuseIdentifier)
+        reviewsView.tableView.register(
+            ReviewTableViewCell.self,
+            forCellReuseIdentifier: ReviewTableViewCell.reuseIdentifier
+        )
         reviewsView.tableView.delegate = self
         reviewsView.tableView.dataSource = self
         
@@ -97,7 +105,10 @@ extension ReviewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.reuseIdentifier, for: indexPath) as! ReviewTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: ReviewTableViewCell.reuseIdentifier,
+            for: indexPath
+        ) as! ReviewTableViewCell
         
         let review = reviews[indexPath.row]
         cell.configure(with: review, isOwner: isUserOwns(review))

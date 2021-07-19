@@ -9,7 +9,10 @@ import Alamofire
 import SwiftyBeaver
 
 protocol AuthInteractorInput {
-    func signIn(username: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void)
+    func signIn(username: String,
+                password: String,
+                completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void
+    )
 }
 
 class AuthInteractor: AuthInteractorInput {
@@ -19,7 +22,10 @@ class AuthInteractor: AuthInteractorInput {
         return requestFactory.makeAuthRequestFatory()
     }()
     
-    func signIn(username: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
+    func signIn(username: String,
+                password: String,
+                completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void
+    ) {
         SwiftyBeaver.info("-> AuthRequestFactory.login")
         authService.login(userName: username, password: password, completionHandler: completionHandler)
     }

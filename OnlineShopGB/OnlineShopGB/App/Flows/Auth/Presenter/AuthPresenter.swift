@@ -50,7 +50,9 @@ extension AuthPresenter: AuthViewOutput {
                     }
                     break
                 default:
-                    SwiftyBeaver.warning("Unexpected result: \(signIn.result) with error: \(String(describing: signIn.errorMessage))")
+                    SwiftyBeaver.warning(
+                        "Unexpected result: \(signIn.result) with error: \(String(describing: signIn.errorMessage))"
+                    )
                     return
                 }
                 

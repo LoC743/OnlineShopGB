@@ -28,7 +28,11 @@ class Review: AbstractRequestFactory {
 }
 
 extension Review: ReviewRequestFactory {
-    func add(userID: Int, productID: Int, text: String, completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void) {
+    func add(userID: Int,
+             productID: Int,
+             text: String,
+             completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void
+    ) {
         SwiftyBeaver.info("Requesting Review - add..")
         let requestModel = Add(baseUrl: self.baseUrl, userID: userID, productID: productID, text: text)
         self.request(request: requestModel, completionHandler: completionHandler)

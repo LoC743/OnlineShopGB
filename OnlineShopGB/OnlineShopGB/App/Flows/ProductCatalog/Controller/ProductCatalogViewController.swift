@@ -47,12 +47,23 @@ class ProductCatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productCatalogView.tableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.reuseIdentifier)
+        productCatalogView.tableView.register(
+            ProductTableViewCell.self,
+            forCellReuseIdentifier: ProductTableViewCell.reuseIdentifier
+        )
         productCatalogView.tableView.delegate = self
         productCatalogView.tableView.dataSource = self
         
-        productCatalogView.popUpProductView.addToCartButton.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
-        productCatalogView.popUpProductView.reviewsButton.addTarget(self, action: #selector(openReviews), for: .touchUpInside)
+        productCatalogView.popUpProductView.addToCartButton.addTarget(
+            self,
+            action: #selector(addToCart),
+            for: .touchUpInside
+        )
+        productCatalogView.popUpProductView.reviewsButton.addTarget(
+            self,
+            action: #selector(openReviews),
+            for: .touchUpInside
+        )
         
         addTapGestureToBlur()
         
@@ -108,7 +119,10 @@ extension ProductCatalogViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath) as! ProductTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: ProductTableViewCell.reuseIdentifier,
+            for: indexPath
+        ) as! ProductTableViewCell
         
         cell.configure(with: catalog[indexPath.row])
         
