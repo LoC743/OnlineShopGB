@@ -10,7 +10,8 @@ import SwiftyBeaver
 
 protocol CartRouterInput {
     func showNotEnoughMoneyAlert()
-    func showSuccessFullPaymentAlert() 
+    func showSuccessFullPaymentAlert()
+    func openUpateUserSettings()
 }
 
 class CartRouter: CartRouterInput {
@@ -45,4 +46,8 @@ class CartRouter: CartRouterInput {
         }
     }
     
+    func openUpateUserSettings() {
+        let updateUserDataViewController = FillUserDataBuilder.buildUpdateUserData()
+        viewController?.present(updateUserDataViewController, animated: true, completion: nil)
+    }
 }

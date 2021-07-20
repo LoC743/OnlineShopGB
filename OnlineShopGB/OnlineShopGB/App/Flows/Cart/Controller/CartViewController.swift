@@ -68,6 +68,7 @@ class CartViewController: UIViewController {
         cartView.payButton.addTarget(self, action: #selector(payButtonTapped), for: .touchUpInside)
         
         setBalance()
+        addUserSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +97,19 @@ class CartViewController: UIViewController {
     
     @objc private func payButtonTapped() {
         presenter.viewDidPayCart()
+    }
+    
+    private func addUserSettings() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "person.crop.circle") ?? UIImage(),
+            style: .plain,
+            target: self,
+            action: #selector(userSettingsButtonTapped)
+        )
+    }
+    
+    @objc private func userSettingsButtonTapped() {
+        presenter.viewDidOpenUpdateUserSettings()
     }
 }
 

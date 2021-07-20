@@ -20,6 +20,7 @@ protocol CartViewOutput {
     func viewDidAddToCart(productID: Int)
     func viewDidRemoveFromCart(productID: Int)
     func viewDidPayCart()
+    func viewDidOpenUpdateUserSettings()
 }
 
 class CartPresenter {
@@ -122,5 +123,9 @@ extension CartPresenter: CartViewOutput {
                 SwiftyBeaver.error("\(error.localizedDescription)")
             }
         }
+    }
+    
+    func viewDidOpenUpdateUserSettings() {
+        router.openUpateUserSettings()
     }
 }

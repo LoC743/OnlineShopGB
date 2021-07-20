@@ -76,7 +76,6 @@
 		8AEB14D426946C9C006FFB06 /* GetCartResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB14D326946C9C006FFB06 /* GetCartResult.swift */; };
 		8AEB14D626946CA6006FFB06 /* PayCartResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB14D526946CA6006FFB06 /* PayCartResult.swift */; };
 		8AF0D25F267CA16700FED02D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF0D25E267CA16700FED02D /* AppDelegate.swift */; };
-		8AF0D263267CA16700FED02D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF0D262267CA16700FED02D /* ViewController.swift */; };
 		8AF0D268267CA16800FED02D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF0D267267CA16800FED02D /* Assets.xcassets */; };
 		8AF0D26B267CA16800FED02D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF0D269267CA16800FED02D /* LaunchScreen.storyboard */; };
 		8AF0D276267CA16800FED02D /* OnlineShopGBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF0D275267CA16800FED02D /* OnlineShopGBTests.swift */; };
@@ -179,7 +178,6 @@
 		8AEB14D526946CA6006FFB06 /* PayCartResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayCartResult.swift; sourceTree = "<group>"; };
 		8AF0D25B267CA16700FED02D /* OnlineShopGB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShopGB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF0D25E267CA16700FED02D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8AF0D262267CA16700FED02D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8AF0D267267CA16800FED02D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AF0D26A267CA16800FED02D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AF0D26C267CA16800FED02D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -681,7 +679,6 @@
 				8AF0D28E267CA2AF00FED02D /* App */,
 				8AF0D294267CA32900FED02D /* Core */,
 				8AF0D293267CA31E00FED02D /* Resources */,
-				8AF0D262267CA16700FED02D /* ViewController.swift */,
 				8AF0D295267CA33F00FED02D /* Environments */,
 			);
 			path = OnlineShopGB;
@@ -1087,7 +1084,6 @@
 				8A1AAB0A269DC31E0034C31E /* ProductCatalogView.swift in Sources */,
 				8A1E1FF72685E29B0087C556 /* GoodResult.swift in Sources */,
 				8A91F5652681D52000EE7057 /* RequestRouter.swift in Sources */,
-				8AF0D263267CA16700FED02D /* ViewController.swift in Sources */,
 				8A91F5672681D56D00EE7057 /* LoginResult.swift in Sources */,
 				8A2A6DE226984A1300193F6E /* AuthViewController.swift in Sources */,
 				8AEB14D426946C9C006FFB06 /* GetCartResult.swift in Sources */,
