@@ -12,6 +12,7 @@ protocol FillUserDataRouterInput {
     func showEmptyFieldsError()
     func moveToMainViewController()
     func dismiss()
+    func moveToAuth()
 }
 
 class FillUserDataRouter: FillUserDataRouterInput {
@@ -42,5 +43,12 @@ class FillUserDataRouter: FillUserDataRouterInput {
     func dismiss() {
         SwiftyBeaver.info("Close this view controller")
         viewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func moveToAuth() {
+        SwiftyBeaver.info("Moving to auth view controller")
+        let authViewController = AuthBuilder.build()
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.setRootViewController(authViewController)
     }
 }

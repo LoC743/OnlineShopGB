@@ -12,6 +12,14 @@ final class UserSession {
     
     private init() { }
     
-    var userData: User?
-    var money: Int = 100000
+    private let defaultMoney = 100000
+    
+    var userData: User? {
+        didSet {
+            money = defaultMoney
+        }
+    }
+    lazy var money: Int = {
+       return defaultMoney
+    }()
 }
