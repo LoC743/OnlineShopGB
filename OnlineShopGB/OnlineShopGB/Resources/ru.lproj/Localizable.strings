@@ -30,7 +30,7 @@
 "creditCardPlaceholder" = "Номер карты";
 "bioPlaceholder" = "О себе";
 
-"mainTabBar" = "Главная";
+"cartTabBar" = "Корзина";
 "productTabBar" = "Каталог";
 
 "errorTitle" = "Ошибка!";
@@ -48,3 +48,12 @@
 "reviewAlertActionsTitle" = "Действия с отзывом";
 "reviewAlertActionsMessage" = "Что вы хотите сделать с этим отзывом?";
 "removeButtonAlert" = "Удалить";
+
+"emptyCartLabel" = "Ваша корзина пуста";
+"totalPriceTitle" = "Итого: ";
+"payButtonTitle" = "Оплатить";
+"notEnoughMoneyAlertTitle" = "Извините!";
+"notEnoughMoneyAlertMessage" = "У вас недостаточно денег.";
+"balanceTitle" = "Баланс: ";
+"successFullPaymentTitle" = "Успех!";
+"successFullPaymentMessage" = "Ваш заказ успешно оплачен.";

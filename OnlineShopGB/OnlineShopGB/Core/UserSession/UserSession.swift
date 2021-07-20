@@ -13,4 +13,5 @@ final class UserSession {
     private init() { }
     
     var userData: User?
+    var money: Int = 100000
 }
