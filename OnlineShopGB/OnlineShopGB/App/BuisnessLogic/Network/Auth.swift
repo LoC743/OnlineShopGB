@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import SwiftyBeaver
 
 class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
@@ -14,12 +15,12 @@ class Auth: AbstractRequestFactory {
     let baseUrl: URL
     
     init(
-        baseURL: URL,
+        baseURL: String,
         errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
-        self.baseUrl = baseURL
+        self.baseUrl = URL(string: baseURL)!
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
@@ -29,21 +30,25 @@ class Auth: AbstractRequestFactory {
 extension Auth: AuthRequestFactory {
     
     func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
+        SwiftyBeaver.info("Requesting SignIn - Login..")
         let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func logout(userID: Int, completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void) {
+        SwiftyBeaver.info("Requesting Logout..")
         let requestModel = Logout(baseUrl: baseUrl, userID: userID)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func signUp(userData: UserData, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
+    func signUp(userData: User, completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void) {
+        SwiftyBeaver.info("Requesting SignUp - Register..")
         let requestModel = SignUp(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func updateUserData(userData: UserData, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
+    func updateUserData(userData: User, completionHandler: @escaping (AFDataResponse<UpdateUserDataResult>) -> Void) {
+        SwiftyBeaver.info("Requesting pdateUserData..")
         let requestModel = UpdateUserData(baseUrl: baseUrl, userData: userData)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -83,12 +88,14 @@ extension Auth {
         let method: HTTPMethod = .post
         let path: String = "register"
         
-        let userData: UserData
+        let userData: User
         var parameters: Parameters? {
             return [
                 "id_user": userData.id,
                 "username": userData.username,
                 "password": userData.password,
+                "first_name": userData.firstname,
+                "last_name": userData.lastname,
                 "email": userData.email,
                 "gender": userData.gender,
                 "credit_card": userData.creditCard,
@@ -102,12 +109,14 @@ extension Auth {
         let method: HTTPMethod = .put
         let path: String = "updateUserData"
         
-        let userData: UserData
+        let userData: User
         var parameters: Parameters? {
             return [
                 "id_user": userData.id,
                 "username": userData.username,
                 "password": userData.password,
+                "first_name": userData.firstname,
+                "last_name": userData.lastname,
                 "email": userData.email,
                 "gender": userData.gender,
                 "credit_card": userData.creditCard,

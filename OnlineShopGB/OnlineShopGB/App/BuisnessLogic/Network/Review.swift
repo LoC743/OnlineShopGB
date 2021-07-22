@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import SwiftyBeaver
 
 class Review: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
@@ -14,12 +15,12 @@ class Review: AbstractRequestFactory {
     let baseUrl: URL
     
     init(
-        baseURL: URL,
+        baseURL: String,
         errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
-        self.baseUrl = URL(string: baseURL.absoluteString + "review/")!
+        self.baseUrl = URL(string: baseURL + StringResources.reviewAddURL)!
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
@@ -28,21 +29,22 @@ class Review: AbstractRequestFactory {
 
 extension Review: ReviewRequestFactory {
     func add(userID: Int, productID: Int, text: String, completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void) {
+        SwiftyBeaver.info("Requesting Review - add..")
         let requestModel = Add(baseUrl: self.baseUrl, userID: userID, productID: productID, text: text)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func remove(commentID: String, completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void) {
+        SwiftyBeaver.info("Requesting Review - remove by comment ID..")
         let requestModel = Remove(baseUrl: self.baseUrl, commentID: commentID)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func get(productID: Int, completionHandler: @escaping (AFDataResponse<Array<ReviewResult>>) -> Void) {
+        SwiftyBeaver.info("Requesting Review - get..")
         let requestModel = Get(baseUrl: self.baseUrl, productID: productID)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-    
-
 }
 
 extension Review {
@@ -50,7 +52,7 @@ extension Review {
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "add"
-    
+        
         let userID: Int
         let productID: Int
         let text: String
@@ -68,7 +70,7 @@ extension Review {
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "remove"
-    
+        
         let commentID: String
         
         var parameters: Parameters? {
@@ -82,7 +84,7 @@ extension Review {
         let baseUrl: URL
         let method: HTTPMethod = .get
         let path: String = ""
-    
+        
         let productID: Int
         
         var parameters: Parameters? {

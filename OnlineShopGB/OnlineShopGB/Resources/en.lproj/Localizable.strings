@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  OnlineShopGB
+
+  Created by Alexey on 09.07.2021.
+  
+*/
+
+"usernamePlaceholder" = "Username";
+"passwordPlaceholder" = "Password";
+
+"signUpButtonTitle" = "Sign Up";
+"signInButtonTitle" = "Sign In";
+"updateUserDataTitle" = "Change";
+
+"userDoesntExistAlertTitle" = "That user does not exist!";
+"userDoesntExistAlertMessage" = "Please make sure that you've entered your login and password correctly.";
+"okAlertAction" = "OK";
+
+"emptyFieldsAlertTitle" = "Warning!";
+"emptyFieldsAlertMessage" = "Please make sure that you did not forget to fill fields.";
+
+"maleGender" = "Male";
+"femaleGender" = "Female";
+"helicopterGender" = "Attack helicopter";
+
+"firstnamePlaceholder" = "First name";
+"lastnamePlaceholder" = "Last name";
+"emailPlaceholder" = "email";
+"creditCardPlaceholder" = "Card number";
+"bioPlaceholder" = "About yourself";

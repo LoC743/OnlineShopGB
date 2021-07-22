@@ -6,8 +6,8 @@
 //
 
 import Foundation
-
 import Alamofire
+import SwiftyBeaver
 
 class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
     private let errorParser: AbstractErrorParser
@@ -17,10 +17,12 @@ class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
     }
     
     func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> T {
+        SwiftyBeaver.info("Starting to decode JSON from \(String(describing: request))")
         if let error = errorParser.parse(response: response, data: data, error: error) {
+            SwiftyBeaver.error("Error parsing JSON from \(String(describing: request))")
             throw error
         }
-
+        
         do {
             let data = try DataResponseSerializer().serialize(request: request, response: response, data: data, error: error)
             let value = try JSONDecoder().decode(T.self, from: data)
@@ -28,6 +30,7 @@ class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
             return value
         } catch {
             let customError = errorParser.parse(error)
+            SwiftyBeaver.error("\(customError)")
             throw customError
         }
     }
