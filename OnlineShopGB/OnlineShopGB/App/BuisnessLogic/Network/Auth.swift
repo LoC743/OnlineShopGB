@@ -15,12 +15,12 @@ class Auth: AbstractRequestFactory {
     let baseUrl: URL
     
     init(
-        baseURL: URL,
+        baseURL: String,
         errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
-        self.baseUrl = baseURL
+        self.baseUrl = URL(string: baseURL)!
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue

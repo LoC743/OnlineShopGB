@@ -15,7 +15,7 @@ class Product: AbstractRequestFactory {
     let baseUrl: URL
     
     init(
-        baseURL: URL,
+        baseURL: String,
         errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)

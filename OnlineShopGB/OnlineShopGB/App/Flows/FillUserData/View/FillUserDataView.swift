@@ -134,7 +134,7 @@ final class FillUserDataView: UIView {
             self.frame.origin.y = 0
         }
     }
-    
+
     func moveViewToTextField(with keyboardFrame: CGRect) {
         var contentInset: UIEdgeInsets = scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height

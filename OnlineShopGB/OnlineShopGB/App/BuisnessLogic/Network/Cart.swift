@@ -15,7 +15,7 @@ class Cart: AbstractRequestFactory {
     let baseUrl: URL
     
     init(
-        baseURL: URL,
+        baseURL: String,
         errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
@@ -28,6 +28,7 @@ class Cart: AbstractRequestFactory {
 }
 
 extension Cart: CartRequestFactory {
+
     func add(userID: Int,
              productID: Int,
              quantity: Int,
