@@ -36,7 +36,8 @@ class OnlineShopGBUITests: XCTestCase {
         secureTextField.tap()
         secureTextField.typeText("Qwerty")
 
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(
+            matching: .other).element.children(matching: .other).element.tap()
         app.buttons["signInButton"].tap()
     }
 

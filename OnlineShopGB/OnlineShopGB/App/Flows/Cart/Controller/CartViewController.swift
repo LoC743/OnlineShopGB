@@ -90,9 +90,12 @@ class CartViewController: UIViewController {
     }
     
     private func calculateTotalPrice() -> Int {
-        return products.reduce(0, {
-            $1.price * $1.quantity
-        })
+        var sum = 0
+        for product in products {
+            sum += product.price * product.quantity
+        }
+        
+        return sum
     }
     
     @objc private func payButtonTapped() {
