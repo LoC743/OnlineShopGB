@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .magenta
+        view.backgroundColor = .white
         setupChangeButton()
         
 //        self.logout()
@@ -61,7 +61,9 @@ class ViewController: UIViewController {
         }
         
         changeButton.layer.cornerRadius = buttonHeight / 2
-        changeButton.backgroundColor = .white
+
+        changeButton.backgroundColor = .systemBlue
+        changeButton.setTitleColor(.white, for: .normal)
         changeButton.setTitle(NSLocalizedString("updateUserDataTitle", comment: ""), for: .normal)
         changeButton.addTarget(self, action: #selector(changeButtonTapped), for: .touchUpInside)
     }

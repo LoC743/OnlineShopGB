@@ -29,3 +29,9 @@
 "emailPlaceholder" = "email";
 "creditCardPlaceholder" = "Card number";
 "bioPlaceholder" = "About yourself";
+
+"mainTabBar" = "Main";
+"productTabBar" = "Catalog";
+
+"errorTitle" = "Error!";
+"errorMessageProductNotFound" = "Oops! Sorry that product does not exist.";
