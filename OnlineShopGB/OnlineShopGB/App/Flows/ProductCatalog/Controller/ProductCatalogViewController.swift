@@ -47,11 +47,23 @@ class ProductCatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productCatalogView.tableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.reuseIdentifier)
+        productCatalogView.tableView.register(
+            ProductTableViewCell.self,
+            forCellReuseIdentifier: ProductTableViewCell.reuseIdentifier
+        )
         productCatalogView.tableView.delegate = self
         productCatalogView.tableView.dataSource = self
         
-        productCatalogView.popUpProductView.addToCartButton.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
+        productCatalogView.popUpProductView.addToCartButton.addTarget(
+            self,
+            action: #selector(addToCart),
+            for: .touchUpInside
+        )
+        productCatalogView.popUpProductView.reviewsButton.addTarget(
+            self,
+            action: #selector(openReviews),
+            for: .touchUpInside
+        )
         
         addTapGestureToBlur()
         
@@ -76,6 +88,25 @@ class ProductCatalogViewController: UIViewController {
         SwiftyBeaver.info("Hide popup view with product info.")
         productCatalogView.hidePopUp()
     }
+    
+    @objc private func openReviews() {
+        SwiftyBeaver.info("Reviews button pressed.")
+        guard let product = productCatalogView.popUpProductView.product,
+              let productID = productCatalogView.popUpProductView.productID else {
+            SwiftyBeaver.warning("Product data for reviews missing.")
+            return
+        }
+
+        presenter.viewDidEnterReviews(for: productID, with: product.name ?? "")
+    }
+    
+    private func showPopUp(for productID: Int) {
+        presenter.viewDidLoadProduct(by: productID) { [weak self] product in
+            DispatchQueue.main.async {
+                self?.productCatalogView.showPopUp(with: product, id: productID)
+            }
+        }
+    }
 }
 
 extension ProductCatalogViewController: ProductCatalogViewInput { }
@@ -88,7 +119,10 @@ extension ProductCatalogViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath) as! ProductTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: ProductTableViewCell.reuseIdentifier,
+            for: indexPath
+        ) as! ProductTableViewCell
         
         cell.configure(with: catalog[indexPath.row])
         
@@ -99,10 +133,6 @@ extension ProductCatalogViewController: UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         
         let id = catalog[indexPath.row].id
-        presenter.viewDidLoadProduct(by: id) { [weak self] product in
-            DispatchQueue.main.async {
-                self?.productCatalogView.showPopUp(with: product)
-            }
-        }
+        showPopUp(for: id)
     }
 }

@@ -19,4 +19,14 @@ extension UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func showAlertSheet(with title: String, message: String, actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        actions.forEach { action in
+            alert.addAction(action)
+        }
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }

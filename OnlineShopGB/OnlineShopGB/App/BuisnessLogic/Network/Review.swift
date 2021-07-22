@@ -20,7 +20,7 @@ class Review: AbstractRequestFactory {
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
-        self.baseUrl = URL(string: baseURL + StringResources.reviewAddURL)!
+        self.baseUrl = baseURL
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
@@ -28,7 +28,12 @@ class Review: AbstractRequestFactory {
 }
 
 extension Review: ReviewRequestFactory {
-    func add(userID: Int, productID: Int, text: String, completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void) {
+
+    func add(userID: Int,
+             productID: Int,
+             text: String,
+             completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void
+    ) {
         SwiftyBeaver.info("Requesting Review - add..")
         let requestModel = Add(baseUrl: self.baseUrl, userID: userID, productID: productID, text: text)
         self.request(request: requestModel, completionHandler: completionHandler)

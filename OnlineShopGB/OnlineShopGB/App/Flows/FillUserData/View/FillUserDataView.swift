@@ -11,6 +11,7 @@ final class FillUserDataView: UIView {
     
     // MARK: - Subviews
     
+    lazy var scrollView = UIScrollView()
     lazy var fieldsStackView = UIStackView()
     lazy var usernameTextField = UITextField()
     lazy var passwordTextField = UITextField()
@@ -48,22 +49,30 @@ final class FillUserDataView: UIView {
         static let safeArea = UIApplication.shared.windows[0].safeAreaInsets
         static let navigationBarHeight: CGFloat = 44.0
         
-        static let topStackViewOffset = navigationBarHeight + safeArea.top + 15.0
+        static let topStackViewOffset = 15.0
         static let sideStackViewOffset = 15.0
         static let spacing: CGFloat = 15.0
         static let heightStackView: CGFloat = 330.0
         static let topGenderPickerOffset: CGFloat = 5.0
         static let sideGenderPickerOffset = 15.0
-//        static let safeTextFildOffset: CGFloat = 55.0
     }
     
     // MARK: - UI
     
     private func configureUI() {
         self.backgroundColor = .white
+        self.addScrollView()
         self.addFieldsStackView()
         self.addGenderPickerView()
         self.setupTextFields()
+    }
+    
+    private func addScrollView() {
+        addSubview(scrollView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalTo(self)
+        }
     }
     
     private func addFieldsStackView() {
@@ -74,10 +83,10 @@ final class FillUserDataView: UIView {
             fieldsStackView.addArrangedSubview(field)
          }
         
-        self.addSubview(fieldsStackView)
+        scrollView.addSubview(fieldsStackView)
         
         fieldsStackView.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(Constants.topStackViewOffset)
+            make.top.equalTo(scrollView).offset(Constants.topStackViewOffset)
             make.left.equalTo(self).offset(Constants.sideStackViewOffset)
             make.right.equalTo(self).offset(-Constants.sideStackViewOffset)
             make.height.equalTo(Constants.heightStackView)
@@ -90,13 +99,13 @@ final class FillUserDataView: UIView {
     }
     
     private func addGenderPickerView() {
-        addSubview(self.genderPickerView)
+        scrollView.addSubview(genderPickerView)
         
         genderPickerView.snp.makeConstraints { make in
             make.top.equalTo(fieldsStackView.snp.bottom).offset(Constants.topGenderPickerOffset)
             make.left.equalTo(self).offset(Constants.sideGenderPickerOffset)
             make.right.equalTo(self).offset(-Constants.sideGenderPickerOffset)
-            make.bottom.equalTo(self).offset(-Constants.topGenderPickerOffset)
+            make.bottom.equalTo(scrollView).offset(-Constants.topGenderPickerOffset)
         }
     }
     
@@ -109,20 +118,34 @@ final class FillUserDataView: UIView {
         creditCardTextField.placeholder = NSLocalizedString("creditCardPlaceholder", comment: "")
         bioTextField.placeholder = NSLocalizedString("bioPlaceholder", comment: "")
         
+        firstnameTextField.textContentType = .name
+        lastnameTextField.textContentType = .familyName
+        creditCardTextField.textContentType = .creditCardNumber
+        emailTextField.textContentType = .emailAddress
+        passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
     }
     
     func restorePostion() {
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+        
         if self.frame.origin.y != 0 {
             self.frame.origin.y = 0
         }
     }
-    
-    func moveViewToTextField(with keyboardSize: CGRect) {
+
+    func moveViewToTextField(with keyboardFrame: CGRect) {
+        var contentInset: UIEdgeInsets = scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+
+        scrollView.contentInset = contentInset
+        
+        
         guard let activeField = activeField else { return }
         let frame = self.convert(activeField.frame, from: fieldsStackView)
         let keyboard = self.frame.maxY - Constants.safeArea.top -
-            Constants.navigationBarHeight - keyboardSize.height
+            Constants.navigationBarHeight - keyboardFrame.height
 
         if self.frame.origin.y == 0  && frame.origin.y > keyboard {
             self.frame.origin.y -= frame.origin.y - keyboard

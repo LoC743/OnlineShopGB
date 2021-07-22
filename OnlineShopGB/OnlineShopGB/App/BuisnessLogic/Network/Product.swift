@@ -20,7 +20,7 @@ class Product: AbstractRequestFactory {
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
-        self.baseUrl = URL(string: baseURL + StringResources.productAddURL)!
+        self.baseUrl = baseURL
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue

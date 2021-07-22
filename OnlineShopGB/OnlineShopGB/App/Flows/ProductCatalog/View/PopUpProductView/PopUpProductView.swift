@@ -16,6 +16,7 @@ final class PopUpProductView: UIView {
     lazy var priceLabel = UILabel()
     
     lazy var addToCartButton = UIButton()
+    lazy var reviewsButton = UIButton()
     
     // MARK: - Init
     
@@ -52,9 +53,13 @@ final class PopUpProductView: UIView {
         static let priceSideOffset: CFloat = 15.0
         
         static let addToCartRightOffset: CFloat = 0.0
-        static let addToCartHeight: CFloat = 55.0
-        static let addToCartWidth: CFloat = 55.0
+        static let buttonHeight: CFloat = 55.0
+        static let buttonWidth: CFloat = 55.0
+        static let reviewsButtonRightOffset: CGFloat = 0.0
     }
+    
+    var productID: Int?
+    var product: GoodResult?
     
     // MARK: - UI
     
@@ -64,6 +69,7 @@ final class PopUpProductView: UIView {
         addProductDescriptionLabel()
         addPriceLabel()
         addCartButton()
+        addReviewsButton()
     }
     
     private func addProductTitleLabel() {
@@ -106,8 +112,8 @@ final class PopUpProductView: UIView {
         
         addToCartButton.snp.makeConstraints { make in
             make.right.equalTo(self).offset(-Constants.addToCartRightOffset)
-            make.height.equalTo(Constants.addToCartHeight)
-            make.width.equalTo(Constants.addToCartWidth)
+            make.height.equalTo(Constants.buttonHeight)
+            make.width.equalTo(Constants.buttonHeight)
             make.centerY.equalTo(priceLabel)
         }
         
@@ -115,14 +121,30 @@ final class PopUpProductView: UIView {
         addToCartButton.setImage(image, for: .normal)
     }
     
+    private func addReviewsButton() {
+        self.addSubview(reviewsButton)
+        
+        reviewsButton.snp.makeConstraints { make in
+            make.right.equalTo(addToCartButton.snp.left).offset(Constants.reviewsButtonRightOffset)
+            make.height.equalTo(Constants.buttonHeight)
+            make.width.equalTo(Constants.buttonHeight)
+            make.centerY.equalTo(priceLabel)
+        }
+        
+        let image = UIImage(systemName: "bubble.left") ?? UIImage()
+        reviewsButton.setImage(image, for: .normal)
+    }
+    
     // MARK: - Configure View Data
     
-    func configure(with product: GoodResult) {
+    func configure(with product: GoodResult, id: Int) {
         self.layer.cornerRadius = Constants.cornerRadius
         
         productTitleLabel.text = product.name
         priceLabel.text = "\(product.price ?? 0) ₽"
         descriptionLabel.text = product.description
+        self.productID = id
+        self.product = product
     }
 }
 

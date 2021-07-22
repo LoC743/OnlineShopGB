@@ -15,6 +15,7 @@ protocol ProductCatalogViewInput: AnyObject {
 protocol ProductCatalogViewOutput {
     func viewDidLoadCatalog()
     func viewDidLoadProduct(by id: Int, completionHandler: @escaping (GoodResult) -> Void)
+    func viewDidEnterReviews(for productID: Int, with productName: String)
 }
 
 class ProductCatalogPresenter {
@@ -65,12 +66,18 @@ extension ProductCatalogPresenter: ProductCatalogViewOutput {
                     )
                     completionHandler(errorProduct)
                 default:
-                    SwiftyBeaver.warning("Unexpected result: \(product.result) with error: \(String(describing: product.errorMessage))")
+                    SwiftyBeaver.warning(
+                        "Unexpected result: \(product.result) with error: \(String(describing: product.errorMessage))"
+                    )
                     return
                 }
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
             }
         }
+    }
+    
+    func viewDidEnterReviews(for productID: Int, with productName: String) {
+        self.router.moveToReviews(productID: productID, productName: productName)
     }
 }

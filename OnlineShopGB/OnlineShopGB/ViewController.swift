@@ -61,7 +61,6 @@ class ViewController: UIViewController {
         }
         
         changeButton.layer.cornerRadius = buttonHeight / 2
-
         changeButton.backgroundColor = .systemBlue
         changeButton.setTitleColor(.white, for: .normal)
         changeButton.setTitle(NSLocalizedString("updateUserDataTitle", comment: ""), for: .normal)
