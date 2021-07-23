@@ -17,4 +17,6 @@ enum StringResources {
     static let usernameTextFieldAccessibilityIdentifier = "usernameTextField"
     static let passwordTextFieldAccessibilityIdentifier = "passwordTextField"
     static let signInButtonAccessibilityIdentifier = "signInButton"
+    
+    static let userError = "Can't get user data from UserSession"
 }

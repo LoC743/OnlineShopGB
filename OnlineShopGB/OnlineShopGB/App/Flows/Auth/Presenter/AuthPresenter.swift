@@ -7,6 +7,8 @@
 
 import UIKit
 import SwiftyBeaver
+import FirebaseCrashlytics
+import FirebaseAnalytics
 
 protocol AuthViewInput: AnyObject { }
 
@@ -26,6 +28,31 @@ class AuthPresenter {
         self.interactor = interactor
         self.router = router
     }
+    
+    private func signInLog(user: User?) {
+        SwiftyBeaver.info("Success sign in")
+        let title = "sign-in"
+        Analytics.logEvent(title, parameters: [
+            "id": user?.id ?? -1,
+            "username": user?.username ?? "Error",
+            "email": user?.email ?? "Error",
+            "bio": user?.bio ?? "Error",
+        ])
+    }
+    
+    private func signInErrorLog(username: String) {
+        SwiftyBeaver.info("User does not exit")
+        let title = "sign-in-error"
+        Analytics.logEvent(title, parameters: [
+            "username": username,
+        ])
+    }
+    
+    private func moveToSignUpLog() {
+        SwiftyBeaver.info("Moving to Sign Up")
+        let title = "move-to-sign-up"
+        Analytics.logEvent(title, parameters: [:])
+    }
 }
 
 extension AuthPresenter: AuthViewOutput {
@@ -37,27 +64,31 @@ extension AuthPresenter: AuthViewOutput {
                 
                 switch signIn.result {
                 case 1:
-                    SwiftyBeaver.info("Success sign in")
+                    self?.signInLog(user: signIn.user)
                     UserSession.shared.userData = signIn.user
                     DispatchQueue.main.async {
                         self?.router.moveToMainViewController()
                     }
                     break
                 case 2:
-                    SwiftyBeaver.info("user does not exit")
+                    self?.signInErrorLog(username: username)
                     DispatchQueue.main.async {
                         self?.router.showUserDoesntExistError()
                     }
                     break
                 default:
-                    SwiftyBeaver.warning(
-                        "Unexpected result: \(signIn.result) with error: \(String(describing: signIn.errorMessage))"
-                    )
+                    let result =
+                        """
+                        Unexpected result: \(signIn.result) with error: \(String(describing: signIn.errorMessage))
+                        """
+                    SwiftyBeaver.warning(result)
+                    Crashlytics.crashlytics().log(result)
                     return
                 }
                 
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
+                Crashlytics.crashlytics().log(error.localizedDescription)
             }
         }
     }
@@ -68,7 +99,7 @@ extension AuthPresenter: AuthViewOutput {
     }
     
     func viewDidSignUp(username: String, password: String) {
-        SwiftyBeaver.info("Moving to Sign Up")
+        moveToSignUpLog()
         router.moveToSignUpViewController(username: username, password: password)
     }
 }

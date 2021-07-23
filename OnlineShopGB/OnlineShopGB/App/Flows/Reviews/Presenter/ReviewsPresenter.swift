@@ -7,6 +7,8 @@
 
 import UIKit
 import SwiftyBeaver
+import FirebaseCrashlytics
+import FirebaseAnalytics
 
 protocol ReviewsViewInput: AnyObject {
     var reviews: [ReviewResult] { get set }
@@ -32,7 +34,7 @@ class ReviewsPresenter {
     private func addReview(_ reviewText: String, _ productID: Int) {
         SwiftyBeaver.info("Trying to add review..")
         guard let userID = UserSession.shared.userData?.id else {
-            SwiftyBeaver.warning("Can not get user ID")
+            userDataFatalError()
             return
         }
         interactor.addReview(userID: userID, productID: productID, reviewText: reviewText) { [weak self] response in
@@ -42,6 +44,7 @@ class ReviewsPresenter {
                 self?.viewDidLoadReviews(for: productID)
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
+                Crashlytics.crashlytics().log("\(error.localizedDescription)")
             }
         }
     }
@@ -58,8 +61,27 @@ class ReviewsPresenter {
                 
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
+                Crashlytics.crashlytics().log("\(error.localizedDescription)")
             }
         }
+    }
+    
+    private func userDataFatalError() {
+        SwiftyBeaver.error(StringResources.userError)
+        Crashlytics.crashlytics().log(StringResources.userError)
+        fatalError(StringResources.userError)
+    }
+    
+    private func addReviewLog() {
+        SwiftyBeaver.info("Add new review")
+        let title = "review-add"
+        Analytics.logEvent(title, parameters: [:])
+    }
+    
+    private func removeReviewLog() {
+        SwiftyBeaver.info("Remove review")
+        let title = "review-remove"
+        Analytics.logEvent(title, parameters: [:])
     }
 }
 
@@ -76,12 +98,13 @@ extension ReviewsPresenter: ReviewsViewOutput {
                 }
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
+                Crashlytics.crashlytics().log("\(error.localizedDescription)")
             }
         }
     }
     
     func viewDidAddNewReview(productID: Int) {
-        SwiftyBeaver.info("Add new review")
+        addReviewLog()
         router.showNewReviewAlert(with: addReview, for: productID)
     }
     
@@ -99,6 +122,7 @@ extension ReviewsPresenter: ReviewsViewOutput {
             style: .cancel,
             handler: nil
         )
+        removeReviewLog()
         router.showReviewSettingAlert(with: [removeAction, cancelAction])
     }
 }
