@@ -29,16 +29,17 @@ class OnlineShopGBTests: XCTestCase {
         
         let signUpExpect = expectation(description: "signup")
         
+        let uuidString = UUID().uuidString
         let user = User(
-            id: 123,
-            username: "Somebody",
-            password: "OnceToldMe",
-            firstname: "John",
-            lastname: "Doe",
-            email: "some@some.ru",
+            id: uuidString.hashValue,
+            username: uuidString,
+            password: uuidString,
+            firstname: uuidString,
+            lastname: uuidString,
+            email: uuidString,
             gender: "m",
             creditCard: "9872389-2424-234224-234",
-            bio: "This is good! I think I will switch to another language"
+            bio: "Bio!"
         )
         auth.signUp(userData: user) { response in
             switch response.result {
@@ -60,14 +61,14 @@ class OnlineShopGBTests: XCTestCase {
         
         let signIn = expectation(description: "login")
         
-        auth.login(userName: "Somebody", password: "OnceToldMe") { response in
+        auth.login(userName: "admin", password: "admin") { response in
             switch response.result {
             case .success(let login):
                 XCTAssertEqual(login.result, 1)
-                XCTAssertEqual(login.user?.id, 123)
-                XCTAssertEqual(login.user?.username, "Somebody")
-                XCTAssertEqual(login.user?.firstname, "John")
-                XCTAssertEqual(login.user?.lastname, "Doe")
+                XCTAssertEqual(login.user?.id, 0)
+                XCTAssertEqual(login.user?.username, "admin")
+                XCTAssertEqual(login.user?.firstname, "admin")
+                XCTAssertEqual(login.user?.lastname, "admin")
                 signIn.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -102,7 +103,7 @@ class OnlineShopGBTests: XCTestCase {
         
         let updateUserData = expectation(description: "update")
         let user = User(
-            id: 123,
+            id: 0,
             username: "Somebody",
             password: "OnceToldMe",
             firstname: "QWERTY",
