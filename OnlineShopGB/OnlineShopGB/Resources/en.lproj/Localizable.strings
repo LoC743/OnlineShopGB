@@ -30,7 +30,7 @@
 "creditCardPlaceholder" = "Card number";
 "bioPlaceholder" = "About yourself";
 
-"mainTabBar" = "Main";
+"cartTabBar" = "Cart";
 "productTabBar" = "Catalog";
 
 "errorTitle" = "Error!";
@@ -48,3 +48,12 @@
 "reviewAlertActionsTitle" = "Review actions";
 "reviewAlertActionsMessage" = "What do you want to do with this review?";
 "removeButtonAlert" = "Remove";
+
+"emptyCartLabel" = "Your cart is empty";
+"totalPriceTitle" = "Total: ";
+"payButtonTitle" = "Pay";
+"notEnoughMoneyAlertTitle" = "Sorry!";
+"notEnoughMoneyAlertMessage" = "Not enough money.";
+"balanceTitle" = "Balance: ";
+"successFullPaymentTitle" = "Success!";
+"successFullPaymentMessage" = "Your order has been successfully paid.";

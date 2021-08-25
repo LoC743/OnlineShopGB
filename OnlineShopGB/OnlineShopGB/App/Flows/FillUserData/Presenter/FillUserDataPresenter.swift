@@ -14,6 +14,7 @@ protocol FillUserDataViewOutput {
     func viewDidSignUp(user: User)
     func viewHaveEmptyFields()
     func viewDidUpdateUserData(user: User)
+    func viewDidLogout()
 }
 
 class FillUserDataPresenter {
@@ -85,5 +86,10 @@ extension FillUserDataPresenter: FillUserDataViewOutput {
                 SwiftyBeaver.error("\(error.localizedDescription)")
             }
         }
+    }
+    
+    func viewDidLogout() {
+        UserSession.shared.userData = nil
+        router.moveToAuth()
     }
 }

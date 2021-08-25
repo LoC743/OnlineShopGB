@@ -21,7 +21,7 @@ struct GetCartResult: Codable {
 
 struct CartProduct: Codable {
     let productID: Int
-    let quantity: Int
+    var quantity: Int
     let price: Int
     let productName: String
     

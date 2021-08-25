@@ -15,7 +15,7 @@ class Review: AbstractRequestFactory {
     let baseUrl: URL
     
     init(
-        baseURL: String,
+        baseURL: URL,
         errorParser: AbstractErrorParser,
         sessionManager: Session,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
@@ -28,7 +28,6 @@ class Review: AbstractRequestFactory {
 }
 
 extension Review: ReviewRequestFactory {
-
     func add(userID: Int,
              productID: Int,
              text: String,

@@ -66,6 +66,7 @@ class FillUserDataViewController: UIViewController {
             setupSignUpButton()
         case .updateData:
             setupUpdateButton()
+            setupLogoutButton()
             fillFieldWithUserSession()
         }
         
@@ -123,6 +124,19 @@ class FillUserDataViewController: UIViewController {
             target: self,
             action: #selector(updateUserDataTapped)
         )
+    }
+    
+    private func setupLogoutButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark.circle.fill") ?? UIImage(),
+            style: .done,
+            target: self,
+            action: #selector(logoutButtonTapped)
+        )
+    }
+    
+    @objc private func logoutButtonTapped() {
+        presenter.viewDidLogout()
     }
     
     private func getUserData() -> User? {

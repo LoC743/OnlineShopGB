@@ -14,16 +14,16 @@ class MainBuilder {
         SwiftyBeaver.info("Creating Main View Controller")
         
         let tabBarController = UITabBarController()
-        let someMainController = ViewController()
+        let cartViewController = CartBuilder.build()
         let productCatalogController = ProductCatalogBuilder.build()
         
-        let mainNavigationController = UINavigationController(rootViewController: someMainController)
-        let mainImage = UIImage(systemName: "circle.grid.3x3") ?? UIImage()
-        let mainImageSelected = UIImage(systemName: "circle.grid.3x3.fill") ?? UIImage()
-        mainNavigationController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("mainTabBar", comment: ""),
-            image: mainImage,
-            selectedImage: mainImageSelected
+        let cartNavigationController = UINavigationController(rootViewController: cartViewController)
+        let cartImage = UIImage(systemName: "cart") ?? UIImage()
+        let cartImageSelected = UIImage(systemName: "cart.fill") ?? UIImage()
+        cartNavigationController.tabBarItem = UITabBarItem(
+            title: NSLocalizedString("cartTabBar", comment: ""),
+            image: cartImage,
+            selectedImage: cartImageSelected
         )
         
         let productsImage = UIImage(systemName: "archivebox")
@@ -35,7 +35,7 @@ class MainBuilder {
             selectedImage: productsImageSelected
         )
         
-        tabBarController.viewControllers = [mainNavigationController, productCatalogNavigationController]
+        tabBarController.viewControllers = [productCatalogNavigationController, cartNavigationController]
         
         return tabBarController
     }

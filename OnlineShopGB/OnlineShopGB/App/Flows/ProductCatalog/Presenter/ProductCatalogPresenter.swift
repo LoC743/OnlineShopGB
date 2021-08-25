@@ -16,6 +16,7 @@ protocol ProductCatalogViewOutput {
     func viewDidLoadCatalog()
     func viewDidLoadProduct(by id: Int, completionHandler: @escaping (GoodResult) -> Void)
     func viewDidEnterReviews(for productID: Int, with productName: String)
+    func viewDidAddToCart(productID: Int)
 }
 
 class ProductCatalogPresenter {
@@ -79,5 +80,20 @@ extension ProductCatalogPresenter: ProductCatalogViewOutput {
     
     func viewDidEnterReviews(for productID: Int, with productName: String) {
         self.router.moveToReviews(productID: productID, productName: productName)
+    }
+    
+    func viewDidAddToCart(productID: Int) {
+        guard let userID = UserSession.shared.userData?.id else {
+            SwiftyBeaver.warning("Can't get user id from UserSession")
+            return
+        }
+        interactor.addToCart(userID: userID, productID: productID) { response in
+            switch response.result {
+            case .success(_):
+                SwiftyBeaver.info("Catalog successfully loaded..")
+            case .failure(let error):
+                SwiftyBeaver.error("\(error.localizedDescription)")
+            }
+        }
     }
 }

@@ -63,6 +63,7 @@ final class AuthView: UIView {
         
         usernameTextField.placeholder = NSLocalizedString("usernamePlaceholder", comment: "")
         usernameTextField.borderStyle = .roundedRect
+        usernameTextField.accessibilityIdentifier = StringResources.usernameTextFieldAccessibilityIdentifier
     }
     
     private func addPasswordTextField() {
@@ -77,6 +78,7 @@ final class AuthView: UIView {
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.accessibilityIdentifier = StringResources.passwordTextFieldAccessibilityIdentifier
     }
 
     private func addButtonsStackView() {
@@ -103,5 +105,6 @@ final class AuthView: UIView {
             button.setTitleColor(.white, for: .normal)
         }
         
+        signInButton.accessibilityIdentifier = StringResources.signInButtonAccessibilityIdentifier
     }
 }

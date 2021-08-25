@@ -18,6 +18,8 @@ class ProductCatalogViewController: UIViewController {
     
     private let presenter: ProductCatalogViewOutput
     
+    private var lastActiveProductID: Int?
+    
     // MARK: - Public Properties
     
     var catalog: [ProductResult] = [] {
@@ -76,6 +78,8 @@ class ProductCatalogViewController: UIViewController {
     
     @objc private func addToCart() {
         SwiftyBeaver.info("Add to cart button pressed.")
+        guard let id = lastActiveProductID else { return }
+        presenter.viewDidAddToCart(productID: id)
         productCatalogView.hidePopUp()
     }
     
@@ -133,6 +137,7 @@ extension ProductCatalogViewController: UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         
         let id = catalog[indexPath.row].id
+        lastActiveProductID = id
         showPopUp(for: id)
     }
 }

@@ -97,7 +97,7 @@ class ReviewsViewController: UIViewController {
 extension ReviewsViewController: ReviewsViewInput { }
 
 
-// MAKR: - TableViewDelegate, TableViewDataSource
+// MARK: - TableViewDelegate, TableViewDataSource
 
 extension ReviewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
