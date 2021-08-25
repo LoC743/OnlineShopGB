@@ -42,6 +42,8 @@ class AuthViewController: UIViewController {
         self.authView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         
         self.addTapGestureRecognizer()
+        
+        self.addCrashButton()
     }
     
     private func addTapGestureRecognizer() {
@@ -53,7 +55,7 @@ class AuthViewController: UIViewController {
         authView.endEditing(true)
     }
     
-    @objc private func signInButtonTapped() {
+    @objc private func signInButtonTapped() {        
         SwiftyBeaver.info("Sign In button pressed")
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""
@@ -72,6 +74,25 @@ class AuthViewController: UIViewController {
         let password: String = authView.passwordTextField.text ?? ""
         
         presenter.viewDidSignUp(username: username, password: password)
+    }
+    
+    private func addCrashButton() {
+        let button = UIButton(type: .system)
+        authView.addSubview(button)
+        
+        button.snp.makeConstraints { make in
+            make.bottom.equalTo(authView).offset(-20.0)
+            make.centerX.equalTo(authView)
+        }
+        
+        button.setTitle("Crash", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.addTarget(self, action: #selector(crash), for: .touchUpInside)
+    }
+    
+    @objc private func crash() {
+        let nillValue: Int? = nil
+        let _ = nillValue!
     }
 }
 

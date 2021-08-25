@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyBeaver
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = AuthBuilder.build()
         window.makeKeyAndVisible()
         self.window = window
+        
+        // Setup Firebase
+        FirebaseApp.configure()
         
         // Setup SwiftyBeaver
         let console = ConsoleDestination()

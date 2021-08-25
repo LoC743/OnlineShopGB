@@ -9,6 +9,8 @@ target 'OnlineShopGB' do
   pod 'Alamofire', '~> 5.4'
   pod 'SnapKit', '~> 5.0.0'
   pod 'SwiftyBeaver'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
 
   target 'OnlineShopGBTests' do
     inherit! :search_paths

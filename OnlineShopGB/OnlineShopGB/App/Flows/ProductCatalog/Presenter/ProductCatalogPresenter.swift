@@ -7,6 +7,8 @@
 
 import UIKit
 import SwiftyBeaver
+import FirebaseCrashlytics
+import FirebaseAnalytics
 
 protocol ProductCatalogViewInput: AnyObject {
     var catalog: [ProductResult] { get set }
@@ -29,6 +31,34 @@ class ProductCatalogPresenter {
         self.interactor = interactor
         self.router = router
     }
+    
+    private func userDataFatalError() {
+        SwiftyBeaver.error(StringResources.userError)
+        Crashlytics.crashlytics().log(StringResources.userError)
+        fatalError(StringResources.userError)
+    }
+    
+    private func loadProductCatalogLog() {
+        SwiftyBeaver.info("Catalog successfully loaded..")
+        let title = "product-catalog-load"
+        Analytics.logEvent(title, parameters: [:])
+    }
+    
+    private func addToCartLog(id: Int) {
+        SwiftyBeaver.info("Product = \(id) added to cart.")
+        let title = "cart-add"
+        Analytics.logEvent(title, parameters: [
+            "id": id
+        ])
+    }
+    
+    private func moveToReviewsLog(id: Int) {
+        SwiftyBeaver.info("Moving to Reviews.")
+        let title = "move-to-reviews"
+        Analytics.logEvent(title, parameters: [
+            "id": id
+        ])
+    }
 }
 
 extension ProductCatalogPresenter: ProductCatalogViewOutput {
@@ -37,12 +67,13 @@ extension ProductCatalogPresenter: ProductCatalogViewOutput {
         interactor.loadCatalog { [weak self] response in
             switch response.result {
             case .success(let catalog):
-                SwiftyBeaver.info("Catalog successfully loaded..")
+                self?.loadProductCatalogLog()
                 DispatchQueue.main.async {
                     self?.viewInput?.catalog = catalog
                 }
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
+                Crashlytics.crashlytics().log("\(error.localizedDescription)")
             }
         }
     }
@@ -67,32 +98,38 @@ extension ProductCatalogPresenter: ProductCatalogViewOutput {
                     )
                     completionHandler(errorProduct)
                 default:
-                    SwiftyBeaver.warning(
-                        "Unexpected result: \(product.result) with error: \(String(describing: product.errorMessage))"
-                    )
+                    let result = """
+                        Unexpected result: \(product.result)
+                        with error: \(String(describing: product.errorMessage))
+                        """
+                    SwiftyBeaver.warning(result)
+                    Crashlytics.crashlytics().log(result)
                     return
                 }
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
+                Crashlytics.crashlytics().log("\(error.localizedDescription)")
             }
         }
     }
     
     func viewDidEnterReviews(for productID: Int, with productName: String) {
+        self.moveToReviewsLog(id: productID)
         self.router.moveToReviews(productID: productID, productName: productName)
     }
     
     func viewDidAddToCart(productID: Int) {
         guard let userID = UserSession.shared.userData?.id else {
-            SwiftyBeaver.warning("Can't get user id from UserSession")
+            userDataFatalError()
             return
         }
-        interactor.addToCart(userID: userID, productID: productID) { response in
+        interactor.addToCart(userID: userID, productID: productID) { [weak self] response in
             switch response.result {
             case .success(_):
-                SwiftyBeaver.info("Catalog successfully loaded..")
+                self?.addToCartLog(id: productID)
             case .failure(let error):
                 SwiftyBeaver.error("\(error.localizedDescription)")
+                Crashlytics.crashlytics().log("\(error.localizedDescription)")
             }
         }
     }
