@@ -11,9 +11,9 @@
 | Урок 7. Рефакторинг                      | :white_check_mark: |
 | Урок 8. Функциональный Swift             | :white_check_mark: |
 | Урок 9. Композитный UI                   | :white_check_mark: |
-| Урок 10. UI-тесты                        | :mag:              |
-| Урок 11. Аналитика                       | :mag:              |
-| Урок 12. CI — непрерывная интеграция     | :x:                |
+| Урок 10. UI-тесты                        | :white_check_mark: |
+| Урок 11. Аналитика                       | :white_check_mark: |
+| Урок 12. CI — непрерывная интеграция     | :white_check_mark: |
 
 -   :x: - не начато
 -   :white_check_mark: - готово
