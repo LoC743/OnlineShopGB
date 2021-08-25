@@ -26,27 +26,19 @@ class OnlineShopGBUITests: XCTestCase {
     // MARK: - Auth test
     
     // User must me signed up
-    func authTest() throws {
+    func testAuth() throws {
         let app = XCUIApplication()
+        app.launch()
         let loginTextField = app.textFields["usernameTextField"]
         loginTextField.tap()
-        loginTextField.typeText("John")
+        loginTextField.typeText("admin")
 
         let secureTextField = app.secureTextFields["passwordTextField"]
         secureTextField.tap()
-        secureTextField.typeText("Qwerty")
+        secureTextField.typeText("admin")
 
         app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(
             matching: .other).element.children(matching: .other).element.tap()
         app.buttons["signInButton"].tap()
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
     }
 }

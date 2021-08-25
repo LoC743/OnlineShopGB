@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='OnlineShopGBUITests.xctest' tests='14' failures='0'>
+  <testsuite name='OnlineShopGBTests.OnlineShopGBTests' tests='13' failures='0'>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testA' time='0.281'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testB' time='0.278'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testC' time='0.282'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testD' time='0.303'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testE' time='0.288'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testF' time='0.294'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testG' time='0.282'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testH' time='0.284'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testI' time='0.356'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testJ' time='0.289'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testK' time='0.284'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testL' time='0.288'/>
+    <testcase classname='OnlineShopGBTests.OnlineShopGBTests' name='testM' time='0.356'/>
+  </testsuite>
+  <testsuite name='OnlineShopGBUITests.OnlineShopGBUITests' tests='1' failures='0'>
+    <testcase classname='OnlineShopGBUITests.OnlineShopGBUITests' name='testAuth' time='3.954'/>
+  </testsuite>
+</testsuites>

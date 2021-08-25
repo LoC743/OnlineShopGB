@@ -79,6 +79,7 @@ class CartPresenter {
         let title = "user-settings"
         Analytics.logEvent(title, parameters: [:])
     }
+}
 
 extension CartPresenter: CartViewOutput {
 
