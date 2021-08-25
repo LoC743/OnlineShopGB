@@ -35,7 +35,7 @@ class CartPresenter {
         self.interactor = interactor
         self.router = router
     }
-    
+
     private func userDataFatalError() {
         SwiftyBeaver.error(StringResources.userError)
         Crashlytics.crashlytics().log(StringResources.userError)

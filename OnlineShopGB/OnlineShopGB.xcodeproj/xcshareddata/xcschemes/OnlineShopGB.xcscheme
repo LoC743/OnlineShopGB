@@ -36,7 +36,8 @@
             reference = "container:TestPlans/Unit.xctestplan">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:TestPlans/UI.xctestplan">
+            reference = "container:TestPlans/UI.xctestplan"
+            default = "YES">
          </TestPlanReference>
       </TestPlans>
       <Testables>
